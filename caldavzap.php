@@ -19,6 +19,8 @@ class caldavzap extends rcube_plugin
 		$this->load_config();
 		$this->add_texts('localization/', true);
 		
+		$this->include_script('client.js');
+		
 		$this->register_task('caldavzap');
 		
 		$this->add_button(array(
@@ -35,35 +37,32 @@ class caldavzap extends rcube_plugin
 		}
 	}
 	
-	private function login_caldavzap() {
+	private function login_caldavzap()
+	{
 		$rcmail = rcmail::get_instance();
 		// Env variables
 		$rcmail->output->set_env('caldavzap_username', $rcmail->user->get_username());
 		$rcmail->output->set_env('caldavzap_password', $rcmail->get_user_password());
 		$rcmail->output->set_env('caldavzap_url', $rcmail->config->get('caldavzap_url', false));
-		$this->include_script('client.js');
 	}
 	
 	function action()
-    {
-        $rcmail = rcmail::get_instance();
-        // register UI objects
-        $rcmail->output->add_handlers(array(
-            'caldavzapcontent' => array($this, 'content'),
-        ));
-
+    	{
+        	$rcmail = rcmail::get_instance();
+        	// register UI objects
+        	$rcmail->output->add_handlers(array('caldavzapcontent' => array($this, 'content'),));
 		$rcmail->output->set_pagetitle($this->gettext('caldavzap'));
-        $rcmail->output->send('caldavzap.caldavzap');
-    }
+        	$rcmail->output->send('caldavzap.caldavzap');
+    	}
 
 	function content($attrib)
-    {
-        $rcmail = rcmail::get_instance();
+    	{
+        	$rcmail = rcmail::get_instance();
 		$attrib['src'] = $rcmail->config->get('caldavzap_url', false);
-        if (empty($attrib['id']))
-            $attrib['id'] = 'rcmailcaldavzapcontent';
-        $attrib['name'] = $attrib['id'];
-        return $rcmail->output->frame($attrib);
-    }
+        	if (empty($attrib['id']))
+            		$attrib['id'] = 'rcmailcaldavzapcontent';
+        	$attrib['name'] = $attrib['id'];
+        	return $rcmail->output->frame($attrib);
+    	}
 }
 ?>
