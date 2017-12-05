@@ -4,7 +4,7 @@
  * Integrate CalDAVZap in to Roundcube
  *
  * @version 1.03
- * @author Sebastian Pfohl
+ * @author Offerel
  * @copyright Copyright (c) 2017, Sebastian Pfohl
  * @license GNU General Public License, version 3
  */
