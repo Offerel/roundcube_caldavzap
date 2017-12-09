@@ -1,4 +1,4 @@
-//var globalEnableDevelBuilds=true;
+var globalEnableDevelBuilds=true;
 
 var globalNetworkCheckSettings={href:'https://'+location.hostname+'/dav/principals/',
 	timeOut: 90000,
@@ -13,14 +13,34 @@ var globalNetworkCheckSettings={href:'https://'+location.hostname+'/dav/principa
 	backgroundCalendars: []
 }
 
-//var globalNetworkAccountSettings={href: 'https://'+location.hostname+'/calendar/auth/index.php',
-//	timeOut: 30000
-//	checkContentType: true,
-//	settingsAccount: true,
-//	delegation: false,
-//	hrefLabel: 'Baikal'
-//};
+/*
+var globalAccountSettings=[
+	{
+		href: 'https://'+location.hostname+'/dav/principals/sebastian@pfohlnet.de/',
+		userAuth:
+		{
+			userName: "",
+			userPassword: ""
+		},
+		timeOut: 90000,
+		lockTimeOut: 10000,
+		checkContentType: true,
+		settingsAccount: true,
+		delegation: false,
+		hrefLabel: 'Predefined',
+		forceReadOnly: null,
+		ignoreAlarms: false,
+		backgroundCalendars: []
+	},
+//	{
+//		href: 'https://server2.com:8443/caldav.php/USERNAME2/',
+//		...
+//		...
+//	}
+];
+*/
 
+//var globalNetworkAccountSettings={href: location.protocol+'//'+location.hostname+(location.port ? ':'+location.port : '')+location.pathname.replace(RegExp('index\.html$'),'')+'auth/', timeOut: 30000};
 
 // globalUseJqueryAuth
 // Use jQuery .ajax() auth or custom header for HTTP basic auth (default).
@@ -28,7 +48,7 @@ var globalNetworkCheckSettings={href:'https://'+location.hostname+'/dav/principa
 // experience auth popups on some browsers).
 // If undefined (or empty), custom header for HTTP basic auth is used.
 // Example:
-//var globalUseJqueryAuth=false;
+var globalUseJqueryAuth=true;
 
 
 // globalBackgroundSync
@@ -103,7 +123,6 @@ var globalSettingsType='principal-URL';
 //   it_IT (Italiano [Italian]; thanks Luca Ferrario)
 //   ja_JP (日本語 [Japan]; thanks Muimu Nakayama)
 //   hu_HU (Magyar [Hungarian])
-//   nb_NO (Norsk (bokmål) [Norwegian]; thanks Tore Ørpetveit)
 //   nl_NL (Nederlands [Dutch]; thanks Johan Vromans)
 //   sk_SK (Slovenčina [Slovak])
 //   tr_TR (Türkçe [Turkish]; thanks Selcuk Pultar)
@@ -269,7 +288,7 @@ var globalActiveTodoCollections=[];
 // NOTE: settings stored on the server (see settingsAccount) overwrite this
 // option.
 // Example:
-var globalCalendarSelected='default/';
+var globalCalendarSelected='/default/';
 
 
 // globalTodoCalendarSelected
@@ -399,7 +418,7 @@ var globalTimeZone='Europe/Berlin';
 // that timezone is enabled (even if it is not present in this list).
 // Example:
 //   var globalTimeZonesEnabled=['America/New_York', 'Europe/Berlin'];	
-var globalTimeZonesEnabled=['Europe/Berlin'];
+var globalTimeZonesEnabled=[];
 
 
 // globalRewriteTimezoneComponent
@@ -441,7 +460,7 @@ var globalIgnoreCompletedOrCancelledAlarms=true;
 // Set this variable to true to use the same approach, ensuring compatible
 // event rendering in special cases.
 // Example:
-var globalMozillaSupport=true;
+var globalMozillaSupport=false;
 
 
 // globalCalendarColorPropertyXmlns
@@ -525,7 +544,32 @@ var globalAppleRemindersMode=true;
 //     in the interface.
 //   - color
 //     Set the calendar color you want to see in the interface.
-//
 // Example:
-
+//var globalSubscribedCalendars={
+//	hrefLabel: 'Abonniert',
+//	calendars: [
+//		{
+//			href: 'https://www.ferienwiki.de/exports/ferien/2017/de/bayern',
+//			userAuth: {
+//				userName: '',
+//				userPassword: ''
+//			},
+//			typeList: ['vevent'],
+//			ignoreAlarm: true,
+//			displayName: 'Ferien Bayern 2017',
+//			color: '#19c10e'
+//		},
+//		{
+//			href: 'https://www.ferienwiki.de/exports/feiertage/2017/de/bayern',
+//			userAuth: {
+//				userName: '',
+//				userPassword: '',
+//			},
+//			typeList: ['vevent'],
+//			ignoreAlarm: true,
+//			displayName: 'Feiertage Bayern',
+//			color: '#19c10e'
+//		}
+//	]
+//};
 
