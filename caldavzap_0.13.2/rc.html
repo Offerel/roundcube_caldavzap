@@ -71,7 +71,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 	<div id="LoginPage" style="opacity: 1; display:none">
 		<div class="window">
 			<div id="Login">
-				<form id="loginform" onsubmit="event.preventDefault(); login();">
+				<form method="POST" id="loginform" onsubmit="event.preventDefault(); login();">
 					<input data-type="system_username" type="hidden" name="username" id="username" class="fs" placeholder="Login" />
 					<input data-type="system_password" type="hidden" name="password" id="password" class="fs" placeholder="Password" />
 					<input type="submit" style="display:none" />
