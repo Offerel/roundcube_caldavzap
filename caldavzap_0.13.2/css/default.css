@@ -557,7 +557,6 @@ td[data-size="login"] > select[data-type="language"]
 {
 	min-width: 331px !important;
 	max-width: 331px !important;
-	display: none;
 }
 
 
@@ -611,6 +610,11 @@ td[data-size="login_logo"]
 	padding-left: 60px !important;
 }
 
+td[data-size="login"], td[data-size="login_input"]
+{
+	border-bottom: 2px solid #585858;
+}
+
 input[type=button], input[type=submit], .ui-datepicker-buttonpane button
 {
 	cursor: pointer;
@@ -655,94 +659,94 @@ input[readonly]
 
 input::-webkit-input-placeholder
 {
-	/* color: #e0e0e0; */
+	color: #e0e0e0;
 	text-shadow: none !important;
 	-webkit-font-smoothing: antialiased;
 }
 input[readonly]::-webkit-input-placeholder
 {
-	/* color: #e0e0e0; */
+	color: #e0e0e0;
 	text-shadow: none !important;
 	-webkit-font-smoothing: antialiased;
 }
 input[disabled]::-webkit-input-placeholder
 {
-	/* color: #e0e0e0; */
+	color: #e0e0e0;
 	text-shadow: none !important;
 	-webkit-font-smoothing: antialiased;
 }
 textarea::-webkit-input-placeholder
 {
-	/* color: #e0e0e0; */
+	color: #e0e0e0;
 	text-shadow: none !important;
 	-webkit-font-smoothing: antialiased;
 }
 textarea[readonly]::-webkit-input-placeholder
 {
-	/* color: #e0e0e0; */
+	color: #e0e0e0;
 	text-shadow: none !important;
 	-webkit-font-smoothing: antialiased;
 }
 
 input:-moz-placeholder
 {
-	/* color: #e0e0e0 !important; */
+	color: #e0e0e0 !important;
 }
 input[readonly]:-moz-placeholder
 {
-	/* color: #e0e0e0 !important; */
+	color: #e0e0e0 !important;
 }
 input[disabled]:-moz-placeholder
 {
-	/* color: #e0e0e0 !important; */
+	color: #e0e0e0 !important;
 }
 textarea:-moz-placeholder
 {
-	/* color: #e0e0e0; */
+	color: #e0e0e0;
 }
 textarea[readonly]:-moz-placeholder
 {
-	/* color: #e0e0e0; */
+	color: #e0e0e0;
 }
 input::-moz-placeholder
 {
-	/* color: #e0e0e0 !important; */
+	color: #e0e0e0 !important;
 }
 input[readonly]::-moz-placeholder
 {
-	/* color: #e0e0e0 !important; */
+	color: #e0e0e0 !important;
 }
 input[disabled]::-moz-placeholder
 {
-	/* color: #e0e0e0 !important; */
+	color: #e0e0e0 !important;
 }
 textarea::-moz-placeholder
 {
-	/* color: #e0e0e0; */
+	color: #e0e0e0;
 }
 textarea[readonly]::-moz-placeholder
 {
-	/* color: #e0e0e0; */
+	color: #e0e0e0;
 }
 input:-ms-input-placeholder
 {
-	/* color: #e0e0e0 !important; */
+	color: #e0e0e0 !important;
 }
 input[readonly]:-ms-input-placeholder
 {
-	/* color: #e0e0e0 !important; */
+	color: #e0e0e0 !important;
 }
 input[disabled]:-ms-input-placeholder
 {
-	/* color: #e0e0e0 !important; */
+	color: #e0e0e0 !important;
 }
 textarea:-ms-input-placeholder
 {
-	/* color: #e0e0e0; */
+	color: #e0e0e0;
 }
 textarea[readonly]:-ms-input-placeholder
 {
-	/* color: #e0e0e0; */
+	color: #e0e0e0;
 }
 
 input[type=text]::-ms-clear {
@@ -758,6 +762,7 @@ input[type=password]::-ms-clear {
 	padding-left: 0px;
 	padding-right: 0px;
 }
+
 
 input[type=text], input[type=password]
 {
@@ -861,7 +866,7 @@ textarea[readonly].safari_hack
 	height: 100%;
 	overflow: hidden;
 	z-index: 101;
-	
+	background: #f8f8f8;
 	display: none;	/* by default the login window is hidden */
 	cursor:default;
 
@@ -870,18 +875,20 @@ textarea[readonly].safari_hack
 	-moz-user-select: -moz-none;
 }
 
-.window {
-	position: absolute;
+.window
+{
+	position: relative;
 	display: inline-block;
-	width: 480px;
-	height: 275px;
-	top: 35%;
-	left: 50%;
-	/* background-color: rgba(255,255,255,0.3); */
-	margin-top: -140px;
-	margin-left: -240px;
-	/* border: 1px solid #4A4949B3; */
-	border-radius: 5px;
+	width: 503px;
+	height: 311px;
+	top: 38.2%;
+	left: 61.8%;
+
+	margin-top: -155px;
+	margin-left: -252px;
+
+	background-image: url(../images/cloud.svg);
+	color: #000000;
 	text-align: center;
 }
 
@@ -907,7 +914,7 @@ textarea[readonly].safari_hack
 	right: 0px;
 	bottom: 0px;
 	overflow: visible;
-/*	background-image: url(../images/cloud.svg); */
+	background-image: url(../images/cloud.svg);
 	display: none;
 	z-index: 1;
 }
@@ -987,7 +994,7 @@ textarea[readonly].safari_hack
 {
 	width: 100%;
 	height: 100%;
-	
+	background: url(../images/loadinfo.gif) no-repeat center center;
 }
 
 .loader_hidden .loader

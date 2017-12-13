@@ -2,12 +2,27 @@
 	background: url(images/calendar.png) 0px 1px no-repeat;
 }
 
-
-
 .iframebox.caldavzap_ {
 	height: 100%;
 }
 
 #pluginbody {
 	height: 100%;
+}
+
+#LoginPage {
+	background: transparent !important;
+	display: none !important;
+}
+
+.window {
+	display: none !important;
+}
+
+#intLogout {
+	display: none !important;
+}
+
+.integration_d {
+	background: transparent !important;
 }

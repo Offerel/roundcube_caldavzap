@@ -4,10 +4,10 @@
 
 	// set to true for debugging XML response, otherwise set to false to avoid browser
 	//  to show http authentication window after unsuccessful authentication
-	$config['auth_send_authenticate_header']=true;
+	$config['auth_send_authenticate_header']=false;
 
 	// successfull authentication XML specification (change the "http://www.server.com:80" to your protocol/server/port)
-	//$config['accounts']=array('resources'=>array());
+	$config['accounts']=array('resources'=>array());
 
 	// note: if you want to use regex values, then use one of the following formats (the second example is with regex modifier): 're:.*someregex.*[0-9]$' or 're|i:.*someregex.*[0-9]$'
 	// note: 'crossdomain' and 'withcredentials' are still available but there is NO REASON to use them (crossDomain is detected automatically, and I've never seen anyone who understand when to use withCredentials /there is NO REASON to set it to true!/)
@@ -15,7 +15,7 @@
 	$config['accounts']['resources'][]=array(
 		'resource'=>array(
 			'type'=>array('calendar'=>''),
-			'href'=>(empty($_SERVER['HTTPS']) ? 'http' : 'https').'://box.pfohlnet.de/dav/calendars/'.$_SERVER['PHP_AUTH_USER'].'/',
+			'href'=>(empty($_SERVER['HTTPS']) ? 'http' : 'https').'://www.server.com:80/caldav.php/'.$_SERVER['PHP_AUTH_USER'].'/',
 			'hreflabel'=>'null',		// if undefined or empty href value is used (see above)
 			'forcereadonly'=>'null',	// see auth/doc/example_config_response.xml for proper use, for example: 'forcereadonly'=>array(array('collection'=>'/caldav.php/user/collection/'), array('collection'=>'re:^/caldav.php/user/collection[0-9]/$')),
 			'settingsaccount'=>'true',	// client properties are saved here (note: set it to true only for ONE account)

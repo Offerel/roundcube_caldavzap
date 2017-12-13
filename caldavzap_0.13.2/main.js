@@ -804,10 +804,10 @@ function run()
 		console.log('Error: \'no account configured\': see config.js!');
 		return false;
 	}
-
+/*
 	if(typeof globalNewVersionNotifyUsers=='undefined' || globalNewVersionNotifyUsers!=null)
 		netVersionCheck();
-
+*/
 	document.title+=' ['+globalAccountSettings[0].userAuth.userName+']';
 	// Automatically detect crossDomain settings
 	var detectedHref=location.protocol+'//'+location.hostname+(location.port ? ':'+location.port : '');

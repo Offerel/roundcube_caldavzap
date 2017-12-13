@@ -29,7 +29,6 @@ class caldavzap extends rcube_plugin
 			'innerclass' => 'button-inner'
 		), 'taskbar');
 		
-		//$skin_path = $this->cal->local_skin_path();
 		$this->include_stylesheet($this->local_skin_path() . '/caldavzap.css');
 		
 		if ($rcmail->task == 'caldavzap') {
@@ -45,6 +44,7 @@ class caldavzap extends rcube_plugin
 		$rcmail->output->set_env('caldavzap_username', $rcmail->user->get_username());
 		$rcmail->output->set_env('caldavzap_password', $rcmail->get_user_password());
 		$rcmail->output->set_env('caldavzap_url', $rcmail->config->get('caldavzap_url', false));
+		$rcmail->output->set_env('skinpath', $this->local_skin_path());
 	}
 	
 	function action()

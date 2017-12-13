@@ -71,7 +71,6 @@
 #intLogout
 {
 	background: url(../images/banner_logout.svg) no-repeat center;
-	display: none !important;
 }
 
 .int_error
