@@ -1,18 +1,25 @@
 {
-    "name": "offerel/caldavzap",
-	"description": "Directly integrate elFinder as App in to Roundcubewith SSO",
-	"keywords": ["elFinder","Filemanager","Files","WebDAV"],
-	"homepage": "https://github.com/Offerel/roundcube_elfinder",
-    "type": "roundcube-plugin",
-    "license": "AGPL-3.0",
-	"version": "1.0.4",
-    "repositories": [
+	"name": "offerel/caldavzap",
+	"description": "A plugin for Roundcube to include CalDAVZap in to the main GUI",
+	"keywords": ["CalDAV","Calendar","Tasks","ToDo","CalDAVZap"],
+	"homepage": "https://github.com/Offerel/roundcube_caldavzap",
+    	"type": "roundcube-plugin",
+	"license": "AGPL-3.0",
+	"version": "1.0.5",
+	"authors": [
+	{
+		"name": "Offerel",
+		"homepage": "https://github.com/Offerel",
+		"role": "Developer"
+	}
+	],
+	"repositories": [
         {
-            "type": "composer",
-            "url": "https://plugins.roundcube.net"
+		"type": "composer",
+		"url": "https://plugins.roundcube.net"
         }
-    ],
-    "require": {
-        "roundcube/plugin-installer": ">=0.1.6"
+	],
+	"require": {
+	"roundcube/plugin-installer": ">=0.1.6"
     }
 }
