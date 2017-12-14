@@ -23,4 +23,4 @@ There are some minor tweaks i have made to:
 # Installation
 1. extract the archive into the plugin folder of Roundcube `<roundcube>/plugins/` and rename it to `caldavzap`, so that the path reads at the end /path/to/DOCUMENT_ROOT/ROUNDCUBEDIR/plugins/caldavzap/.
 2. configure CalDAVZap config.js to your needs in the "caldavzap_0.13.2" subdir of this plugin. Keep in mind that your DAV source uses the same credentials as the Roundcube credentials
-3. activate the CalDAVZap plugin in <roundcube>/config/config.inc.php in the way that you add it to the active plugins array, like `$config['plugins'] = array('persistent_login');`
+3. activate the CalDAVZap plugin in <roundcube>/config/config.inc.php in the way that you add it to the active plugins array, like `$config['plugins'] = array('caldavzap');`
