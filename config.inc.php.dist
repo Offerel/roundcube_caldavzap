@@ -1,0 +1,13 @@
+<?php
+// URL to CalDAVZap
+$config['caldavzap_url'] = 'plugins/caldavzap/caldavzap_0.13.2/roundcube.html';
+
+// Domain for CalDAV server
+$config['caldav_server'] = 'sub.domain.com';
+
+// CalDAV Path where the DAV server resides
+$config['caldav_path'] = '/dav/calendars/';
+
+// Name for the CalDAV server
+$config['caldav_name'] = 'My Calendars';
+?>

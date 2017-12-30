@@ -3,7 +3,7 @@
  * Roundcube CalDAVZap Plugin
  * Integrate CalDAVZap in to Roundcube
  *
- * @version 1.03
+ * @version 1.1.0
  * @author Offerel
  * @copyright Copyright (c) 2017, Offerel
  * @license GNU General Public License, version 3
@@ -33,7 +33,6 @@ class caldavzap extends rcube_plugin
 		
 		if ($rcmail->task == 'caldavzap') {
 			$this->register_action('index', array($this, 'action'));
-			$this->login_caldavzap();
 		}
 	}
 	

@@ -804,10 +804,10 @@ function run()
 		console.log('Error: \'no account configured\': see config.js!');
 		return false;
 	}
-
+/*
 	if(typeof globalNewVersionNotifyUsers=='undefined' || globalNewVersionNotifyUsers!=null)
 		netVersionCheck();
-
+*/
 	document.title+=' ['+globalAccountSettings[0].userAuth.userName+']';
 	// Automatically detect crossDomain settings
 	var detectedHref=location.protocol+'//'+location.hostname+(location.port ? ':'+location.port : '');
@@ -855,6 +855,7 @@ function run()
 
 function loadConfig()
 {
+	console.log("Info: loadConfig");
 	if(isUserLogged)// !!!!!! kedy moze toto nastat? nexapem ...
 		return false;
 
@@ -865,6 +866,7 @@ function loadConfig()
 	// check username and password against the server and create config from globalNetworkCheckSettings
 	if(typeof globalNetworkCheckSettings!='undefined' && globalNetworkCheckSettings!=null)
 	{
+		console.log("Using now: globalNetworkCheckSettings");
 		if(globalLoginUsername=='' || globalLoginPassword=='')
 		{
 			$('#LoginPage').fadeTo(500, 1, function(){if(typeof globalDemoMode=='undefined') $('[data-type="system_username"]').focus()});
@@ -901,6 +903,7 @@ function loadConfig()
 	// load the configuration XML(s) from the network
 	if(typeof globalNetworkAccountSettings!='undefined' && globalNetworkAccountSettings!=null)
 	{
+		console.log("Using now: globalNetworkAccountSettings");
 		if(globalLoginUsername=='' || globalLoginPassword=='')
 		{
 			$('#LoginPage').fadeTo(500, 1, function(){if(typeof globalDemoMode=='undefined') $('[data-type="system_username"]').focus()});
@@ -933,8 +936,28 @@ function loadConfig()
 		}
 	}
 
-	if((typeof globalNetworkAccountSettings=='undefined' || globalNetworkAccountSettings==null) && (typeof globalNetworkCheckSettings=='undefined' || globalNetworkCheckSettings==null) && (typeof globalAccountSettings!='undefined' && globalAccountSettings!=null) && globalAccountSettings.length>0)
+	if(typeof globalNetworkRoundcubeSettings!='undefined' && globalNetworkRoundcubeSettings!=null)
 	{
+		var delegCount=0, delegIndex=0;
+		globalNetworkRoundcubeSettings.crossDomain=false;
+		netLoadConfiguration(globalNetworkRoundcubeSettings);
+		
+		$('.integration_d').css('display', 'block');
+		$('.integration_d').css('background', 'unset');
+		
+		// show the refresh button
+		if(typeof globalEnableRefresh==='boolean' && globalEnableRefresh && (globalAvailableAppsArray.indexOf('CalDavZAP')!=-1 || globalAvailableAppsArray.indexOf('CalDavTODO')!=-1 || globalAvailableAppsArray.indexOf('CardDavMATE')!=-1)) {
+			$('#intRefresh').attr('title',localization[globalInterfaceLanguage].txtRefresh).find('.int_error').attr('alt',localization[globalInterfaceLanguage].txtError);
+			$('#intRefresh').prev().addBack().css('display', 'block');
+		}
+
+		globalResourceNumber=globalNetworkRoundcubeSettings.length;
+		return true;
+	}
+	
+	if((typeof globalNetworkRoundcubeSettings=='undefined' || globalNetworkRoundcubeSettings==null) &&(typeof globalNetworkAccountSettings=='undefined' || globalNetworkAccountSettings==null) && (typeof globalNetworkCheckSettings=='undefined' || globalNetworkCheckSettings==null) && (typeof globalAccountSettings!='undefined' && globalAccountSettings!=null) && globalAccountSettings.length>0)
+	{
+		console.log("Using now: globalAccountSettings");
 		var delegCount=0, delegIndex=0;
 		if(!isDelegationLoaded)
 		{
@@ -950,6 +973,7 @@ function loadConfig()
 			if(delegCount>0)
 				isDelegationLoaded = true;
 		}
+		
 		if(delegCount==0 && !isDelegationLoaded)
 		{
 			// start the client
@@ -961,6 +985,8 @@ function loadConfig()
 				runProjects();
 			if(isAvaible('Settings'))
 				runSettings();
+			
+			
 
 			globalResourceNumber=globalAccountSettings.length;
 			loadAllResources();
