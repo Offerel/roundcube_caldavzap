@@ -9,6 +9,10 @@ There are some minor tweaks i have made to:
 5. **/auth/plugins/roundcube* ** both files manage to login via a existing Roundcube session
 
 # Changelog
+**v1.1.1**
+  - Small fix for Classic skin
+  - Fix for path issue
+
 **v1.1.0**
   - There is now a special auth plugin for CalDAVZap to use together with Roundcube. With this its not needed to fill in the loginform, we can now login via a existing Roundcube session.
   - Added more config parameters in config.inc.php

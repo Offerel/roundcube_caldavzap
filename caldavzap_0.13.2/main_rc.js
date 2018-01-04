@@ -942,6 +942,18 @@ function loadConfig()
 		globalNetworkRoundcubeSettings.crossDomain=false;
 		netLoadConfiguration(globalNetworkRoundcubeSettings);
 		
+		/*
+		// start the client
+			if(isAvaible('CardDavMATE'))
+				runCardDAV();
+			if(isAvaible('CalDavZAP'))
+				runCalDAV();
+			if(isAvaible('Projects'))
+				runProjects();
+			if(isAvaible('Settings'))
+				runSettings();
+		*/	
+		
 		$('.integration_d').css('display', 'block');
 		$('.integration_d').css('background', 'unset');
 		
@@ -952,6 +964,7 @@ function loadConfig()
 		}
 
 		globalResourceNumber=globalNetworkRoundcubeSettings.length;
+		//loadAllResources();
 		return true;
 	}
 	

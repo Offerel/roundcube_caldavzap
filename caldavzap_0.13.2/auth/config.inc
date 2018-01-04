@@ -6,8 +6,8 @@ $rcmail = rcmail::get_instance();
 if (!empty($rcmail->user->ID)) {
 	$user = $rcmail->user->get_username();
 	$pw = $rcmail->get_user_password();
-	$domain = $rcmail->config->get('caldav_server');
-	$path = $rcmail->config->get('caldav_path');
+	$domain = $rcmail->config->get('caldav_server', false);
+	$path = $rcmail->config->get('caldav_path', false);
 }
 else {
 	die('Not logged in. config.inc');
@@ -18,7 +18,7 @@ else {
 
 	// set to true for debugging XML response, otherwise set to false to avoid browser
 	//  to show http authentication window after unsuccessful authentication
-	$config['auth_send_authenticate_header']=false;
+	$config['auth_send_authenticate_header']=true;
 
 	// successfull authentication XML specification (change the "http://www.server.com:80" to your protocol/server/port)
 	//$config['accounts']=array('resources'=>array());

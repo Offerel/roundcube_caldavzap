@@ -8,7 +8,7 @@
 
 	// Default values are usually OK
 	//  for Davical:
-	$pluginconfig['request']=$rcmail->config->get('caldav_path');	// change only if your Davical is not installed into server root directory
+	$pluginconfig['request']=$rcmail->config->get('caldav_path', false);	// change only if your Davical is not installed into server root directory
 	//  for Lion server:
 	//$pluginconfig['request']='/principals/users';
 

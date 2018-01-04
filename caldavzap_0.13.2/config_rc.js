@@ -5,7 +5,7 @@ var globalNetworkRoundcubeSettings={
 	href: location.protocol+'//'+location.hostname+
 		(location.port ? ':'+location.port : '')+
 		location.pathname.replace(RegExp('roundcube\.html$'),'')+
-		'/auth/',
+		'auth/',
 	timeOut: 30000
 };
 
