@@ -3,7 +3,7 @@
  * Roundcube CalDAVZap Plugin
  * Integrate CalDAVZap in to Roundcube
  *
- * @version 1.1.2
+ * @version 1.1.3
  * @author Offerel
  * @copyright Copyright (c) 2017, Offerel
  * @license GNU General Public License, version 3
@@ -18,7 +18,6 @@ class caldavzap extends rcube_plugin
 		$rcmail = rcmail::get_instance();
 		$this->load_config();
 		$this->add_texts('localization/', true);
-		
 		$this->register_task('caldavzap');
 		
 		$this->add_button(array(
@@ -36,9 +35,9 @@ class caldavzap extends rcube_plugin
 		}
 	}
 	
-	private function login_caldavzap()
+	function login_caldavzap()
 	{
-		$rcmail = rcmail::get_instance();
+		$rcmail = rcmail::get_instance();		
 		$rcmail->output->set_env('caldavzap_username', $rcmail->user->get_username());
 		$rcmail->output->set_env('caldavzap_password', $rcmail->get_user_password());
 		$rcmail->output->set_env('caldavzap_url', $rcmail->config->get('caldavzap_url', false));
