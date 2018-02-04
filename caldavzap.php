@@ -21,11 +21,13 @@ class caldavzap extends rcube_plugin
 		$this->register_task('caldavzap');
 		
 		$this->add_button(array(
-			'label'      => 'caldavzap.caldavzap',
-			'command'    => 'caldavzap',
-			'class'      => 'button-calendar',
-			'classsel'   => 'button-calendar button-selected',
-			'innerclass' => 'button-inner'
+			'label'		=> 'caldavzap.caldavzap',
+			'id'		=> '7ea3a1d1-8270-4985-aaaa-c8227e551e43',
+			'command'	=> 'caldavzap',
+			'class'		=> 'button-calendar',
+			'classsel'	=> 'button-calendar button-selected',
+			'innerclass'=> 'button-inner',
+			'type'		=> 'link'
 		), 'taskbar');
 		
 		$this->include_stylesheet($this->local_skin_path() . '/caldavzap.css');
