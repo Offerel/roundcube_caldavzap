@@ -1,0 +1,20 @@
+#LoginPage {
+	background: transparent !important;
+	display: none !important;
+}
+.window {
+	display: none !important;
+}
+#main, #mainTODO {
+	padding: 0 !important;
+}
+.iframebox.caldavzap_ {
+	height: 100%;
+}
+#intLogout {
+	display: none !important;
+}
+
+.integration_d {
+	background: transparent !important;
+}
