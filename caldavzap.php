@@ -3,9 +3,9 @@
  * Roundcube CalDAVZap Plugin
  * Integrate CalDAVZap in to Roundcube
  *
- * @version 1.1.3
+ * @version 1.4.1
  * @author Offerel
- * @copyright Copyright (c) 2017, Offerel
+ * @copyright Copyright (c) 2018, Offerel
  * @license GNU General Public License, version 3
  */
 
@@ -34,8 +34,19 @@ class caldavzap extends rcube_plugin
 		if ($rcmail->task == 'caldavzap') {
 			$this->register_action('index', array($this, 'action'));
 		}
+		
+		$caldavzap_langs = array("cs_CZ", "da_DK", "de_DE", "en_US", "fr_FR", "it_IT", "ja_JP", "hu_HU", "nb_NO", "nl_NL", "sk_SK", "tr_TR", "ru_RU", "uk_UA", "zh_CN");
+		$rc_lang = $rcmail->get_user_language();
+		$rc_timezone = $rcmail->config->get('timezone');
+		
+		if(in_array($rc_lang,$caldavzap_langs)) {
+			setcookie("rclang",$rc_lang);
+			setcookie("rctz",$rcmail->config->get('timezone'));
+		} else {
+			setcookie("rclang","en_US");
+		}
 	}
-	
+	/*
 	function login_caldavzap() {
 		$rcmail = rcmail::get_instance();		
 		$rcmail->output->set_env('caldavzap_username', $rcmail->user->get_username());
@@ -43,7 +54,7 @@ class caldavzap extends rcube_plugin
 		$rcmail->output->set_env('caldavzap_url', $rcmail->config->get('caldavzap_url', false));
 		$rcmail->output->set_env('skinpath', $this->local_skin_path());
 	}
-	
+	*/
 	function action() {
 		$rcmail = rcmail::get_instance();
 		$rcmail->output->add_handlers(array('caldavzapcontent' => array($this, 'content'),));
