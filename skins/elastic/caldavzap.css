@@ -14,7 +14,16 @@
 #intLogout {
 	display: none !important;
 }
-
+#calendar::before {
+	content: "\f073";
+}
+#todo::before {
+	content: "\f0ae";
+}
 .integration_d {
-	background: transparent !important;
+	display: none !important;
+}
+#resourceCalDAV_h, #resourceCalDAVTODO_h, #ResourceCalDAVList, #ResourceCalDAVTODOList, #timezoneWrapper, #timezoneWrapperTODO {
+	left: 0 !important;
+	width: 274px !important;
 }
