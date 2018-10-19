@@ -29,7 +29,7 @@ class caldavzap extends rcube_plugin
 			'type'		=> 'link'
 		), 'taskbar');
 		
-		$this->include_stylesheet($this->local_skin_path() . '/caldavzap.css');
+		$this->include_stylesheet($this->local_skin_path().'/caldavzap.min.css');
 		
 		if ($rcmail->task == 'caldavzap') {
 			$this->register_action('index', array($this, 'action'));
@@ -46,15 +46,7 @@ class caldavzap extends rcube_plugin
 			setcookie("rclang","en_US");
 		}
 	}
-	/*
-	function login_caldavzap() {
-		$rcmail = rcmail::get_instance();		
-		$rcmail->output->set_env('caldavzap_username', $rcmail->user->get_username());
-		$rcmail->output->set_env('caldavzap_password', $rcmail->get_user_password());
-		$rcmail->output->set_env('caldavzap_url', $rcmail->config->get('caldavzap_url', false));
-		$rcmail->output->set_env('skinpath', $this->local_skin_path());
-	}
-	*/
+
 	function action() {
 		$rcmail = rcmail::get_instance();
 		$rcmail->output->add_handlers(array('caldavzapcontent' => array($this, 'content'),));
