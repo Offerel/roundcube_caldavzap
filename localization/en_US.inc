@@ -1,4 +1,6 @@
 ﻿<?php
 $labels = array();
-$labels['caldavzap'] = 'Calendar';
+$labels['caldavzap'] = 'Calendars';
+$labels['todo'] = 'Todos';
+$labels['reload'] = 'Refresh';
 ?>
