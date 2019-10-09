@@ -1,3 +1,40 @@
+#content {
+	width: 100%;
+}
+.iframe-wrapper {
+	height: calc(100% - 50px);
+}
+#pluginbody {
+	height: 100%;
+}
+#SystemCalDavZAP #main {
+	padding: 0 !important;
+}
+#caldavzaptoolbar {
+	font-family: "Icons";
+	text-align: center;
+}
+#caldavzaptoolbar a.button {
+	line-height: 1.8rem;
+	font-size: 1.5rem;
+	max-width: 5rem;
+	min-width: 3.5rem;
+	padding: .5rem .45rem .45rem;
+	float: left;
+}
+#caldavzaptoolbar .inner {
+	font-weight: normal;
+	float: left;
+	font-family: Roboto,sans-serif;
+	font-size: 1rem;
+	display: block;
+	text-overflow: ellipsis;
+	overflow-x: hidden;
+	max-width: 5rem;
+}
+.integration_d {
+	display: none !important;
+}
 #LoginPage {
 	background: transparent !important;
 	display: none !important;
@@ -14,14 +51,14 @@
 #intLogout {
 	display: none !important;
 }
-#calendar::before {
+#caldavzaptoolbar #calendar::before {
 	content: "\f073";
 }
-#todo::before {
-	content: "\f0ae";
+#caldavzaptoolbar #refresh::before {
+	content: "\f2f9";
 }
-.integration_d {
-	display: none !important;
+#caldavzaptoolbar #todo::before {
+	content: "\f0ae";
 }
 #resourceCalDAV_h, #resourceCalDAVTODO_h, #ResourceCalDAVList, #ResourceCalDAVTODOList, #timezoneWrapper, #timezoneWrapperTODO {
 	left: 0 !important;

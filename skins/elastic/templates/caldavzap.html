@@ -4,11 +4,10 @@
 <div id="content" class="content selected" role="main">
 	<div class="header">
 		<a class="button icon menu-button" href="#menu"><span class="inner"><roundcube:label name="menu" /></span></a>
-		<span class="header-title caldavzaptitle"><roundcube:label name="caldavzap.caldavzap" /></span>
 		<div id="caldavzaptoolbar" class="toolbar" role="toolbar">
-			<roundcube:button id="calendar" command="calendar" type="link" class="button calendar" label="caldavzap.caldavzap" title="caldavzap.caldavzap" onclick="document.getElementById('caldavzapcontentframe').contentWindow.checkForApplication('CalDavZAP');" />
-			<roundcube:button id="todo" command="todo" type="link" class="button todo" label="caldavzap.todo" title="caldavzap.todo" onclick="document.getElementById('caldavzapcontentframe').contentWindow.checkForApplication('CalDavTODO');" />
-			<roundcube:button id="refresh" command="refresh" type="link" class="button refresh" label="caldavzap.reload" title="caldavzap.reload" onclick="document.getElementById('caldavzapcontentframe').contentWindow.reloadResources();" />
+			<roundcube:button innerclass="inner" id="calendar" command="calendar" type="link" class="button calendar" label="caldavzap.caldavzap" title="caldavzap.caldavzap" onclick="document.getElementById('caldavzapcontentframe').contentWindow.checkForApplication('CalDavZAP');" />
+			<roundcube:button innerclass="inner" id="todo" command="todo" type="link" class="button todo" label="caldavzap.todo" title="caldavzap.todo" onclick="document.getElementById('caldavzapcontentframe').contentWindow.checkForApplication('CalDavTODO');" />
+			<roundcube:button innerclass="inner" id="refresh" command="refresh" type="link" class="button refresh" label="caldavzap.reload" title="caldavzap.reload" onclick="document.getElementById('caldavzapcontentframe').contentWindow.reloadResources();" />
 		</div>
 	</div>
 	<div class="iframe-wrapper">	

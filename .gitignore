@@ -1,0 +1,5 @@
+META-INF/*
+*.bak
+options/bookmarks_chrome.json
+.vscode
+config.inc.php
