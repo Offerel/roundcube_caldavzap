@@ -20,6 +20,6 @@
         }
 	],
 	"require": {
-	"roundcube/plugin-installer": ">=0.1.7"
+		"roundcube/plugin-installer": ">=0.1.7"
     }
 }
