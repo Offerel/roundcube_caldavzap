@@ -5,6 +5,7 @@
 	"homepage": "https://github.com/Offerel/roundcube_caldavzap",
     	"type": "roundcube-plugin",
 	"license": "AGPL-3.0",
+	"version": "1.4.2",
 	"authors": [
 	{
 		"name": "Offerel",
@@ -12,7 +13,6 @@
 		"role": "Developer"
 	}
 	],
-	"version": "1.4.2",
 	"repositories": [
         {
 		"type": "composer",
@@ -20,6 +20,6 @@
         }
 	],
 	"require": {
-		"roundcube/plugin-installer": ">=0.1.7"
+	"roundcube/plugin-installer": ">=0.1.6"
     }
 }
