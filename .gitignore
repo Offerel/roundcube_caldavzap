@@ -3,3 +3,4 @@ META-INF/*
 options/bookmarks_chrome.json
 .vscode
 config.inc.php
+.gitignore
