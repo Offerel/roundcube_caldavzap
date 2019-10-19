@@ -10,4 +10,27 @@ $config['caldav_path'] = '/dav/calendars/';
 
 // Name for the CalDAV server
 $config['caldav_name'] = 'My Calendars';
+
+// This options sets the default calendar view option 
+// Supported values:
+// - 'month'
+// - 'multiWeek'
+// - 'agendaWeek'
+// - 'agendaDay'
+$config['cdz_standardview'] = "agendaWeek";
+
+// Set the datepicker first day of the week: Sunday is 0, Monday is 1, etc.
+$config['cdz_weekstart'] = 1;
+
+// These options set the start and end of business hours with 0.5 hour
+// precision. Non-business hours are faded out in the calendar interface.
+// If both variables are set to the same value then no fade out occurs.
+$config['cdz_businesstart'] = 7;
+$config['cdz_businessend'] = 15;
+
+// This option sets the 2 days considered as weekend days, these
+// are faded out in the calendar interface. Non-weekend days are automatically
+// considered as business days.
+// Sunday is 0, Monday is 1, etc.
+$config['cdz_weekendays'] = "0,6";
 ?>

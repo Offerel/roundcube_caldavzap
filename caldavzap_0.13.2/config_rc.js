@@ -1,8 +1,5 @@
 var globalNetworkRoundcubeSettings={
-	href: location.protocol+'//'+location.hostname+
-		(location.port ? ':'+location.port : '')+
-		location.pathname.replace(RegExp('roundcube\.html$'),'')+
-		'auth/',
+	href: location.protocol+'//'+location.hostname+(location.port ? ':'+location.port : '')+location.pathname.replace(RegExp('roundcube\.html$'),'')+'auth/',
 	timeOut: 30000
 };
 var globalBackgroundSync=true;
@@ -10,14 +7,24 @@ var globalSyncResourcesInterval=120000;
 var globalEnableRefresh=true;
 var globalEnableKbNavigation=true;
 var globalSettingsType='principal-URL';
+
 var ck = document.cookie.split('; ');
 for(var i = 0; i < ck.length; i++) {
-	if(ck[i].includes("rclang=")) {
-		var globalInterfaceLanguage=ck[i].split("=")[1];
-	}
+	var c = ck[i];
+	nameEQ = "cdz=";
+	while (c.charAt(0) === ' ') {
+		c = c.substring(1,c.length);
+    }
 	
-	if(ck[i].includes("rctz=")) {
-		var globalTimeZone=decodeURIComponent(ck[i].split("=")[1]);
+	if (c.indexOf(nameEQ) === 0) {
+		var carr = JSON.parse(decodeURIComponent(c.substring(nameEQ.length,c.length)));
+		var globalInterfaceLanguage=carr.cdz_ln;
+		var globalTimeZone=carr.cdz_tz;
+		var globalDatepickerFirstDayOfWeek=carr.cdz_fd;
+		var globalCalendarStartOfBusiness=carr.cdz_sb;
+		var globalCalendarEndOfBusiness=carr.cdz_eb;
+		var globalWeekendDays=carr.cdz_wd.split(",");
+		var globalActiveView=carr.cdz_wv;
 	}
 }
 var globalSortAlphabet=' 0123456789'+
@@ -35,7 +42,6 @@ var globalSearchTransformAlphabet={
 };
 var globalResourceAlphabetSorting=true;
 var globalNewVersionNotifyUsers=[];
-var globalDatepickerFirstDayOfWeek=1;
 var globalHideInfoMessageAfter=1800;
 var globalEditorFadeAnimation=666;
 var globalEventStartPastLimit=3;
@@ -47,11 +53,8 @@ var globalActiveCalendarCollections=[];
 var globalActiveTodoCollections=[];
 var globalCalendarSelected='/default/';
 var globalTodoCalendarSelected='default/';
-var globalActiveView='agendaWeek';
 var globalOpenFormMode='single';
 var globalTodoListFilterSelected=['filterAction', 'filterProgress'];
-var globalCalendarStartOfBusiness=7;
-var globalCalendarEndOfBusiness=15;
 var globalDefaultEventDuration=60;
 var globalDisplayHiddenEvents=false;
 var globalTimeZoneSupport=false;
@@ -60,5 +63,4 @@ var globalRemoveUnknownTimezone=false;
 var globalShowHiddenAlarms=false;
 var globalIgnoreCompletedOrCancelledAlarms=true;
 var globalMozillaSupport=true;
-var globalWeekendDays=[0, 6];
 var globalAppleRemindersMode=true;
