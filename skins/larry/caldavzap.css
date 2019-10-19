@@ -10,6 +10,12 @@
 	display: none !important;
 }
 
+#sections-table #rcmrowcaldavzap .section {
+	background-position: 4px -525px;
+}
+
 .integration_d {
 	background: transparent !important;
 }
+
+

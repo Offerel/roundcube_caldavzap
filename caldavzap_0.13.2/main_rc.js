@@ -18,7 +18,6 @@ GNU Affero General Public License for more details.
 You should have received a copy of the GNU Affero General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
-
 var globalEventList=new EventList();
 var globalAppleSupport = new AppleSupportNextDateArray();
 var globalResourceCalDAVList=new ResourceCalDAVList();
@@ -804,10 +803,10 @@ function run()
 		console.log('Error: \'no account configured\': see config.js!');
 		return false;
 	}
-/*
-	if(typeof globalNewVersionNotifyUsers=='undefined' || globalNewVersionNotifyUsers!=null)
-		netVersionCheck();
-*/
+
+//	if(typeof globalNewVersionNotifyUsers=='undefined' || globalNewVersionNotifyUsers!=null)
+//		netVersionCheck();
+
 	document.title+=' ['+globalAccountSettings[0].userAuth.userName+']';
 	// Automatically detect crossDomain settings
 	var detectedHref=location.protocol+'//'+location.hostname+(location.port ? ':'+location.port : '');
@@ -855,7 +854,6 @@ function run()
 
 function loadConfig()
 {
-	console.log("Info: loadConfig");
 	if(isUserLogged)// !!!!!! kedy moze toto nastat? nexapem ...
 		return false;
 
