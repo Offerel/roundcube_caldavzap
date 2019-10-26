@@ -33,6 +33,7 @@ class caldavzap extends rcube_plugin
 		
 		if ($rcmail->task == 'caldavzap') {
 			$this->register_action('index', array($this, 'action'));
+			$rcmail->output->set_env('refresh_interval', 0);
 		}
 		
 		if($rcmail->task == 'settings') {
@@ -70,12 +71,8 @@ class caldavzap extends rcube_plugin
 									'cdz_eb' => $cdz_businessend,
 									'cdz_wd' => $cdz_weekendays];
 		}
+
 		setcookie('cdz', json_encode($cdz_options));
-	}
-	
-	function preferences_sections_list($p) {
-		$p['list']['caldavzap'] = array('id' => 'cakdavzap', 'section' => 'kaldavzap');
-		return $p;
 	}
 
 	function cal_preferences_sections_list($p) {
@@ -190,6 +187,7 @@ class caldavzap extends rcube_plugin
                 'cdz_weekendays'	=> implode(",", $checked)
             );
 		}
+
         return $p;
 	}
 

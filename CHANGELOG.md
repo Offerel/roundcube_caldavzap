@@ -1,6 +1,6 @@
 ### v1.5.0
-- Added Preferences for Plugin
-- Small Bugfix
+- Remove refresh, when plugin is active
+- Add settings page
   
 ### v1.4.1
 - Fix for Roundcube 1.4 RC2

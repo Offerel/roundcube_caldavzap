@@ -13,6 +13,9 @@
 #sections-table #rcmrowcaldavzap .section {
 	background-position: 4px -525px;
 }
+#sections-table #rcmrowcaldavzap.selected .section {
+	background-position: 4px -549px;
+}
 
 .integration_d {
 	background: transparent !important;
