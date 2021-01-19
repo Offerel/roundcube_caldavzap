@@ -36,4 +36,9 @@ $labels['cdz_time_15'] = '15:00';
 $labels['cdz_time_16'] = '16:00';
 $labels['cdz_time_17'] = '17:00';
 $labels['cdz_time_18'] = '18:00';
+
+$labels['cdz_timezone'] = 'Zeitzone';
+$labels['cdz_tzsupport'] = 'Zeitzonen-Support';
+$labels['cdz_rewritetz'] = 'Zeitzone überschreiben';
+$labels['cdz_removetz'] = 'Unbekannte Zeitzone entfernen';
 ?>

@@ -3,9 +3,9 @@
  * Roundcube CalDAVZap Plugin
  * Integrate CalDAVZap in to Roundcube
  *
- * @version 1.5.0
+ * @version 1.5.1
  * @author Offerel
- * @copyright Copyright (c) 2018, Offerel
+ * @copyright Copyright (c) 2021, Offerel
  * @license GNU General Public License, version 3
  */
 
@@ -33,6 +33,7 @@ class caldavzap extends rcube_plugin
 		
 		if ($rcmail->task == 'caldavzap') {
 			$this->register_action('index', array($this, 'action'));
+			$rcmail->output->set_env('refresh_interval', 0);
 		}
 		
 		if($rcmail->task == 'settings') {
@@ -52,6 +53,9 @@ class caldavzap extends rcube_plugin
 		$cdz_businesstart = $rcmail->config->get('cdz_businesstart');
 		$cdz_businessend = $rcmail->config->get('cdz_businessend');
 		$cdz_weekendays = $rcmail->config->get('cdz_weekendays');
+		$cdz_timezonesupport = $rcmail->config->get('cdz_tzsupport');
+		$cdz_rewritetimezone = $rcmail->config->get('cdz_rewritetz');
+		$cdz_removetimezone = $rcmail->config->get('cdz_removetz');
 
 		if(in_array($rc_lang,$caldavzap_langs)) {
 			$cdz_options = array(	'cdz_ln' => $rc_lang, 
@@ -60,22 +64,24 @@ class caldavzap extends rcube_plugin
 									'cdz_fd' => $cdz_weekstart,
 									'cdz_sb' => $cdz_businesstart,
 									'cdz_eb' => $cdz_businessend,
-									'cdz_wd' => $cdz_weekendays);
+									'cdz_wd' => $cdz_weekendays,
+									'cdz_ts' => $cdz_timezonesupport,
+									'cdz_tr' => $cdz_rewritetimezone,
+									'cdz_td' => $cdz_removetimezone);
 		} else {
-			$cdz_options = [	'cdz_ln' => 'en_US', 
+			$cdz_options = [		'cdz_ln' => 'en_US', 
 									'cdz_tz' => $rc_timezone,
 									'cdz_wv' => $cdz_standardview,
 									'cdz_fd' => $cdz_weekstart,
 									'cdz_sb' => $cdz_businesstart,
 									'cdz_eb' => $cdz_businessend,
-									'cdz_wd' => $cdz_weekendays];
+									'cdz_wd' => $cdz_weekendays,
+									'cdz_ts' => $cdz_timezonesupport,
+									'cdz_tr' => $cdz_rewritetimezone,
+									'cdz_td' => $cdz_removetimezone];
 		}
+
 		setcookie('cdz', json_encode($cdz_options));
-	}
-	
-	function preferences_sections_list($p) {
-		$p['list']['caldavzap'] = array('id' => 'cakdavzap', 'section' => 'kaldavzap');
-		return $p;
 	}
 
 	function cal_preferences_sections_list($p) {
@@ -170,7 +176,66 @@ class caldavzap extends rcube_plugin
 																				$inputw3->show($c3)." ".$this->gettext('cdz_day_3')."</br>".
 																				$inputw4->show($c4)." ".$this->gettext('cdz_day_4')."</br>".
 																				$inputw5->show($c5)." ".$this->gettext('cdz_day_5')."</br>".
-																				$inputw6->show($c6)." ".$this->gettext('cdz_day_6')."</br>");
+																				$inputw6->show($c6)." ".$this->gettext('cdz_day_6')."</br>"
+																);
+
+		$field_id='tzone';
+		$cdz_tzselect = new html_select([
+										'name'  => 'cdz_tzselect',
+										'id'    => 'cdz_tzselect',
+										'class' => 'custom-select'
+										]);
+
+		$cdz_tzselect->add($rcmail->gettext('autodetect'), 'auto');
+		$zones = [];
+		$timezone_identifiers = DateTimeZone::listIdentifiers();
+		$utcTime = new DateTime('now', new DateTimeZone('GMT'));
+		foreach($timezone_identifiers as $key => $timezone) {
+			$tz = new DateTimeZone($timezone);
+			$zones[$key]['offset'] = (int)$tz->getOffset($utcTime);
+			$zones[$key]['name'] = $timezone;
+		}
+
+		usort($zones, function($a, $b) {
+			return ($a['offset'] == $b['offset']) ? strcmp($a['name'], $b['name']):$a['offset'] - $b['offset'];
+		});
+
+		$azone = $rcmail->config->get('timezone');
+
+		foreach ($zones as $zone) {
+			$sign = ($zone['offset'] > 0) ? '+' : '-';
+			$offset = gmdate('H:i', abs($zone['offset']));
+			$cdz_tzselect->add('(GMT '.$sign.$offset.') '.$zone['name']);
+			if($azone == $zone['name']) $azone = '(GMT '.$sign.$offset.') '.$zone['name'];
+		}
+
+		$inputt1 = new html_checkbox(array(	'name'	=> 'cdz_gtzs',
+											'id'	=> 'cdz_gtzs',
+											'value' => 1
+										));
+
+		$inputt2 = new html_checkbox(array(	'name'	=> 'cdz_grtz',
+											'id'	=> 'cdz_grtz',
+											'value' => 1
+										));
+
+		$inputt3 = new html_checkbox(array(	'name'	=> 'cdz_gdtz',
+											'id'	=> 'cdz_gdtz',
+											'value' => 1
+										));
+
+		$cdz_gtzs = $rcmail->config->get('cdz_tzsupport');
+		$cdz_grtz = $rcmail->config->get('cdz_rewritetz');
+		$cdz_gdtz = $rcmail->config->get('cdz_removetz');
+
+		$p['blocks']['main']['options']['tzone'] = array(
+														'title'=> html::label($field_id, $this->gettext('cdz_timezone')),
+														'content'=> $cdz_tzselect->show($azone)."</br>".
+																	$inputt1->show($cdz_gtzs)." ".$this->gettext('cdz_tzsupport')."</br>".
+																	$inputt2->show($cdz_grtz)." ".$this->gettext('cdz_rewritetz')."</br>".
+																	$inputt3->show($cdz_gdtz)." ".$this->gettext('cdz_removetz')."</br>"
+													);
+
 		return $p;
 	}
 
@@ -182,14 +247,22 @@ class caldavzap extends rcube_plugin
 				}
 			}
 
+			$tz = rcube_utils::get_input_value('cdz_tzselect', rcube_utils::INPUT_POST);
+			$tz = substr($tz, strpos($tz, ') ',0) + 2);
+
             $p['prefs'] = array(
                 'cdz_standardview'	=> rcube_utils::get_input_value('cdz_standardview', rcube_utils::INPUT_POST),
                 'cdz_weekstart'		=> intval(rcube_utils::get_input_value('cdz_weekstart', rcube_utils::INPUT_POST)),
                 'cdz_businesstart'	=> intval(rcube_utils::get_input_value('cdz_businesstart', rcube_utils::INPUT_POST)),
                 'cdz_businessend'	=> intval(rcube_utils::get_input_value('cdz_businessend', rcube_utils::INPUT_POST)),
-                'cdz_weekendays'	=> implode(",", $checked)
+				'cdz_weekendays'	=> implode(",", $checked),
+				'cdz_tzsupport'		=> intval(rcube_utils::get_input_value('cdz_gtzs', rcube_utils::INPUT_POST)),
+				'cdz_rewritetz'		=> intval(rcube_utils::get_input_value('cdz_grtz', rcube_utils::INPUT_POST)),
+				'cdz_removetz'		=> intval(rcube_utils::get_input_value('cdz_gdtz', rcube_utils::INPUT_POST)),
+				'timezone'		=> $tz
             );
 		}
+
         return $p;
 	}
 
@@ -203,8 +276,7 @@ class caldavzap extends rcube_plugin
 	function content($attrib) {
 		$rcmail = rcmail::get_instance();
 		$attrib['src'] = $rcmail->config->get('caldavzap_url', false);
-		if (empty($attrib['id']))
-				$attrib['id'] = 'rcmailcaldavzapcontent';
+		if (empty($attrib['id'])) $attrib['id'] = 'rcmailcaldavzapcontent';
 		$attrib['name'] = $attrib['id'];
 		return $rcmail->output->frame($attrib);
 	}
