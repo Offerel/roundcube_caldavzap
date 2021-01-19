@@ -1,3 +1,6 @@
+### v1.5.1
+- Added option for using timezones
+  
 ### v1.5.0
 - Remove refresh, when plugin is active
 - Add settings page
