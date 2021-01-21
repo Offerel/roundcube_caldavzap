@@ -1,3 +1,6 @@
+### v1.5.1.1
+- Fix for depracted samesite Cookie
+  
 ### v1.5.1
 - Added option for using timezones
   

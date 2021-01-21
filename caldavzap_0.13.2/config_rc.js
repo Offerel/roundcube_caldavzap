@@ -18,7 +18,6 @@ for(var i = 0; i < ck.length; i++) {
 	
 	if (c.indexOf(nameEQ) === 0) {
 		var carr = JSON.parse(decodeURIComponent(c.substring(nameEQ.length,c.length)));
-		console.log(carr);
 		var globalInterfaceLanguage=carr.cdz_ln;
 		var globalTimeZone=carr.cdz_tz;
 		var globalDatepickerFirstDayOfWeek=carr.cdz_fd;
@@ -26,6 +25,9 @@ for(var i = 0; i < ck.length; i++) {
 		var globalCalendarEndOfBusiness=carr.cdz_eb;
 		var globalWeekendDays=carr.cdz_wd.split(",");
 		var globalActiveView=carr.cdz_wv;
+		var globalTimeZoneSupport=carr.cdz_ts;
+		var globalRewriteTimezoneComponent=carr.cdz_tr;
+		var globalRemoveUnknownTimezone=carr.cdz_td;
 	}
 }
 var globalSortAlphabet=' 0123456789'+
@@ -57,10 +59,7 @@ var globalTodoCalendarSelected='default/';
 var globalOpenFormMode='single';
 var globalTodoListFilterSelected=['filterAction', 'filterProgress'];
 var globalDefaultEventDuration=60;
-var globalDisplayHiddenEvents=false;
-var globalTimeZoneSupport=carr.cdz_ts;
-var globalRewriteTimezoneComponent=carr.cdz_tr;
-var globalRemoveUnknownTimezone=carr.cdz_td;
+var globalDisplayHiddenEvents=false;	
 var globalShowHiddenAlarms=false;
 var globalIgnoreCompletedOrCancelledAlarms=true;
 var globalMozillaSupport=true;

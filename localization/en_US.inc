@@ -39,6 +39,6 @@ $labels['cdz_time_18'] = '06:00 pm';
 
 $labels['cdz_timezone'] = 'Timezone';
 $labels['cdz_tzsupport'] = 'Timezone-Support';
-$labels['cdz_rewritetz'] = 'Rewrite Timezone';
-$labels['cdz_removetz'] = 'Remove unknown Timezone';
+$labels['cdz_rewritetz'] = 'Rewrite timezone';
+$labels['cdz_removetz'] = 'Remove unknown timezone';
 ?>

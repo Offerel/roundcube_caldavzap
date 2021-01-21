@@ -3,7 +3,7 @@
  * Roundcube CalDAVZap Plugin
  * Integrate CalDAVZap in to Roundcube
  *
- * @version 1.5.1
+ * @version 1.5.1.1
  * @author Offerel
  * @copyright Copyright (c) 2021, Offerel
  * @license GNU General Public License, version 3
@@ -49,39 +49,26 @@ class caldavzap extends rcube_plugin
 		
 		$rc_timezone = $rcmail->config->get('timezone');
 		$cdz_standardview = $rcmail->config->get('cdz_standardview');
-		$cdz_weekstart = $rcmail->config->get('cdz_weekstart');
-		$cdz_businesstart = $rcmail->config->get('cdz_businesstart');
-		$cdz_businessend = $rcmail->config->get('cdz_businessend');
+		$cdz_weekstart = intval($rcmail->config->get('cdz_weekstart'));
+		$cdz_businesstart = intval($rcmail->config->get('cdz_businesstart'));
+		$cdz_businessend = intval($rcmail->config->get('cdz_businessend'));
 		$cdz_weekendays = $rcmail->config->get('cdz_weekendays');
-		$cdz_timezonesupport = $rcmail->config->get('cdz_tzsupport');
-		$cdz_rewritetimezone = $rcmail->config->get('cdz_rewritetz');
-		$cdz_removetimezone = $rcmail->config->get('cdz_removetz');
+		$cdz_timezonesupport = boolval($rcmail->config->get('cdz_tzsupport'));
+		$cdz_rewritetimezone = boolval($rcmail->config->get('cdz_rewritetz'));
+		$cdz_removetimezone = boolval($rcmail->config->get('cdz_removetz'));
+		$cdz_options = ['cdz_ln' => (in_array($rc_lang,$caldavzap_langs)) ? $rc_lang:'en_US', 
+						'cdz_tz' => $rc_timezone,
+						'cdz_wv' => $cdz_standardview,
+						'cdz_fd' => $cdz_weekstart,
+						'cdz_sb' => $cdz_businesstart,
+						'cdz_eb' => $cdz_businessend,
+						'cdz_wd' => $cdz_weekendays,
+						'cdz_ts' => $cdz_timezonesupport,
+						'cdz_tr' => $cdz_rewritetimezone,
+						'cdz_td' => $cdz_removetimezone
+						];
 
-		if(in_array($rc_lang,$caldavzap_langs)) {
-			$cdz_options = array(	'cdz_ln' => $rc_lang, 
-									'cdz_tz' => $rc_timezone,
-									'cdz_wv' => $cdz_standardview,
-									'cdz_fd' => $cdz_weekstart,
-									'cdz_sb' => $cdz_businesstart,
-									'cdz_eb' => $cdz_businessend,
-									'cdz_wd' => $cdz_weekendays,
-									'cdz_ts' => $cdz_timezonesupport,
-									'cdz_tr' => $cdz_rewritetimezone,
-									'cdz_td' => $cdz_removetimezone);
-		} else {
-			$cdz_options = [		'cdz_ln' => 'en_US', 
-									'cdz_tz' => $rc_timezone,
-									'cdz_wv' => $cdz_standardview,
-									'cdz_fd' => $cdz_weekstart,
-									'cdz_sb' => $cdz_businesstart,
-									'cdz_eb' => $cdz_businessend,
-									'cdz_wd' => $cdz_weekendays,
-									'cdz_ts' => $cdz_timezonesupport,
-									'cdz_tr' => $cdz_rewritetimezone,
-									'cdz_td' => $cdz_removetimezone];
-		}
-
-		setcookie('cdz', json_encode($cdz_options));
+		setcookie('cdz', json_encode($cdz_options), 0, parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '.'.$_SERVER['HTTP_HOST'], true);
 	}
 
 	function cal_preferences_sections_list($p) {
