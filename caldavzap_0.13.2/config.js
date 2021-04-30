@@ -1,9 +1,18 @@
+if('serviceWorker' in navigator) {
+	window.addEventListener('load', function() {
+		navigator.serviceWorker.register('./sw.js').then(function(registration) {
+			console.log('ServiceWorker registered');
+		}, function(err) {
+			console.log('ServiceWorker registration failed: ', err);
+		});
+	});
+}
 //var globalEnableDevelBuilds=true;
 
 var globalNetworkCheckSettings={href:'https://'+location.hostname+'/dav/principals/',
 	timeOut: 90000,
 	lockTimeOut: 10000,
-	checkContentType: true,
+	checkContentType: false,
 	settingsAccount: true,
 	delegation: false,
 	additionalResources: [],
@@ -37,7 +46,7 @@ var globalNetworkCheckSettings={href:'https://'+location.hostname+'/dav/principa
 // If false, synchronization is performed only if the browser window/tab
 // is focused. If undefined or not false, then background sync is enabled.
 // Example:
-var globalBackgroundSync=true;
+var globalBackgroundSync=false;
 
 
 // globalSyncResourcesInterval
@@ -195,7 +204,7 @@ var globalHideInfoMessageAfter=1800;
 // Set the editor fade in/out animation duration when editing or saving data
 // (in miliseconds).
 // Example:
-var globalEditorFadeAnimation=666;
+var globalEditorFadeAnimation=333;
 
 
 
@@ -207,8 +216,8 @@ var globalEditorFadeAnimation=666;
 // NOTE: if you experience problems with data loading and your server has
 // no time-range filtering support set these variables to null.
 // Example:
-var globalEventStartPastLimit=3;
-var globalEventStartFutureLimit=3;
+var globalEventStartPastLimit=1;
+var globalEventStartFutureLimit=1;
 var globalTodoPastLimit=1;
 
 
@@ -379,7 +388,7 @@ var globalDisplayHiddenEvents=false;
 // have start and end time.
 // If this option is disabled then local time is used.
 // Example:
-var globalTimeZoneSupport=false;
+var globalTimeZoneSupport=true;
 
 
 // globalTimeZone
@@ -527,5 +536,3 @@ var globalAppleRemindersMode=true;
 //     Set the calendar color you want to see in the interface.
 //
 // Example:
-
-

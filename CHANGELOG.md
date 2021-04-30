@@ -1,3 +1,7 @@
+### v1.5.2
+- Fix deprecated caching mechanism
+- Added caching Service Worker
+  
 ### v1.5.1.1
 - Fix for depracted samesite Cookie
   
