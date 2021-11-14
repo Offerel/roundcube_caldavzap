@@ -7,7 +7,6 @@ if('serviceWorker' in navigator) {
 		});
 	});
 }
-//var globalEnableDevelBuilds=true;
 
 var globalNetworkCheckSettings={href:'https://'+location.hostname+'/dav/principals/',
 	timeOut: 90000,

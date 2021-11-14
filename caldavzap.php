@@ -87,7 +87,7 @@ class caldavzap extends rcube_plugin
 		
 		$field_id='cdz_standardview';
 		$select   = new html_select(array('name' => 'cdz_standardview', 'id' => $field_id));
-		foreach (array('month', 'multiWeek', 'agendaWeek', 'agendaDay') as $m) {$select->add($this->gettext('cdz_'.$m), $m);}
+		foreach (array('month', 'multiWeek', 'agendaWeek', 'agendaDay', 'todo') as $m) {$select->add($this->gettext('cdz_'.$m), $m);}
 		$p['blocks']['main']['options']['cdz_standardview'] = array(
 														'title'=> html::label($field_id, $this->gettext('cdz_standardview')),
 														'content'=> $select->show($rcmail->config->get('cdz_standardview')));

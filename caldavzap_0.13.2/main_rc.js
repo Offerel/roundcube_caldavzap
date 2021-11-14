@@ -164,7 +164,6 @@ var globalSettings={
 	loadedaddressbookcollections: {value:  (typeof globalLoadedAddressbookCollections!='undefined' && globalLoadedAddressbookCollections!=null) ? globalLoadedAddressbookCollections : new Array(), locked:false}
 };
 
-
 function resetSettings()
 {
 	globalSettings={
@@ -1052,7 +1051,7 @@ function globalMain()
 	}
 	else
 		globalActiveApp=globalSettings.defaultactiveapp.value;
-
+	
 	if(isAvaible('CardDavMATE'))
 	{
 		// Modify available inputs before making additional changes to vCard form
@@ -1179,7 +1178,6 @@ function globalMain()
 
 function saveSettings(isFormSave)
 {
-
 	if(globalSettings.islastdefaultactiveapp.value)
 		globalSettings.defaultactiveapp.value=globalActiveApp;
 
@@ -1582,6 +1580,9 @@ function loadSettings(strobj, fromServer, syncMode)
 		if(globalSettings.enablekbnavigation.value!==false)
 			initKbProjectNavigation();
 	settingsLoaded=true;
+
+	globalSettings.defaultactiveapp.value = (globalActiveView == 'todo') ? 'CalDavTODO':'CalDavZAP';
+
 	if(!isAvaible(globalSettings.defaultactiveapp.value))
 		globalActiveApp = globalAvailableAppsArray[0];
 	else
