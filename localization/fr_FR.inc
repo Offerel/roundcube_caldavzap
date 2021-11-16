@@ -13,6 +13,7 @@ $labels['cdz_month'] = 'Mois';
 $labels['cdz_multiWeek'] = 'Multisem.';
 $labels['cdz_agendaDay'] = 'Jour';
 $labels['cdz_agendaWeek'] = 'Semaine';
+$labels['cdz_todo'] = 'Tâches';
 
 $labels['cdz_day_0'] = 'Dimanche';
 $labels['cdz_day_1'] = 'Lundi';

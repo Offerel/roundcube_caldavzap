@@ -3,7 +3,7 @@
  * Roundcube CalDAVZap Plugin
  * Integrate CalDAVZap in to Roundcube
  *
- * @version 1.5.1.1
+ * @version 1.5.2
  * @author Offerel
  * @copyright Copyright (c) 2021, Offerel
  * @license GNU General Public License, version 3
