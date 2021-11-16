@@ -141,9 +141,9 @@ var globalSettings={
 	showhiddenalarms: {value:  (typeof globalShowHiddenAlarms!='undefined' && globalShowHiddenAlarms!=null) ? globalShowHiddenAlarms : false, locked:false},
 	ignorecompletedorcancelledalarms: {value: (typeof globalIgnoreCompletedOrCancelledAlarms!='undefined' && globalIgnoreCompletedOrCancelledAlarms!=null) ? globalIgnoreCompletedOrCancelledAlarms : true, locked:false},
 	weekenddays: {value: (typeof globalWeekendDays!='undefined' && globalWeekendDays!=null && globalWeekendDays!='') ? globalWeekendDays : [0, 6], locked:false},
-	eventstartpastlimit: {value:  (typeof globalEventStartPastLimit!='undefined' && globalEventStartPastLimit!=null) ? globalEventStartPastLimit : 3, locked:false},
-	todopastlimit: {value:  (typeof globalTodoPastLimit!='undefined' && globalTodoPastLimit!=null) ? globalTodoPastLimit : 3, locked:false},
-	eventstartfuturelimit: {value:  (typeof globalEventStartFutureLimit!='undefined' && globalEventStartFutureLimit!=null) ? globalEventStartFutureLimit : 3, locked:false},
+	eventstartpastlimit: {value:  (typeof globalEventStartPastLimit!='undefined' && globalEventStartPastLimit!=null) ? globalEventStartPastLimit : 1, locked:false},
+	todopastlimit: {value:  (typeof globalTodoPastLimit!='undefined' && globalTodoPastLimit!=null) ? globalTodoPastLimit : 1, locked:false},
+	eventstartfuturelimit: {value:  (typeof globalEventStartFutureLimit!='undefined' && globalEventStartFutureLimit!=null) ? globalEventStartFutureLimit : 1, locked:false},
 	compatibility: {value: (typeof globalCompatibility!='undefined' && globalCompatibility!=null && globalCompatibility!='') ? globalCompatibility : {anniversaryOutputFormat: ['apple']}, locked:false},
 	contactstorefn: {value: (typeof globalContactStoreFN!='undefined' && globalContactStoreFN!=null && globalContactStoreFN!='') ? globalContactStoreFN : ['prefix',' last',' middle',' first',' suffix'], locked:false},
 	urihandlertel: {value: (typeof globalUriHandlerTel!='undefined' && globalUriHandlerTel!=null && globalUriHandlerTel!='') ? globalUriHandlerTel : 'tel:', locked:false},
@@ -163,7 +163,6 @@ var globalSettings={
 	activeaddressbookcollections: {value:  (typeof globalActiveAddressbookCollections!='undefined' && globalActiveAddressbookCollections!=null) ? globalActiveAddressbookCollections : new Array(), locked:false},
 	loadedaddressbookcollections: {value:  (typeof globalLoadedAddressbookCollections!='undefined' && globalLoadedAddressbookCollections!=null) ? globalLoadedAddressbookCollections : new Array(), locked:false}
 };
-
 
 function resetSettings()
 {
@@ -804,9 +803,6 @@ function run()
 		return false;
 	}
 
-//	if(typeof globalNewVersionNotifyUsers=='undefined' || globalNewVersionNotifyUsers!=null)
-//		netVersionCheck();
-
 	document.title+=' ['+globalAccountSettings[0].userAuth.userName+']';
 	// Automatically detect crossDomain settings
 	var detectedHref=location.protocol+'//'+location.hostname+(location.port ? ':'+location.port : '');
@@ -1055,7 +1051,7 @@ function globalMain()
 	}
 	else
 		globalActiveApp=globalSettings.defaultactiveapp.value;
-
+	
 	if(isAvaible('CardDavMATE'))
 	{
 		// Modify available inputs before making additional changes to vCard form
@@ -1182,7 +1178,6 @@ function globalMain()
 
 function saveSettings(isFormSave)
 {
-
 	if(globalSettings.islastdefaultactiveapp.value)
 		globalSettings.defaultactiveapp.value=globalActiveApp;
 
@@ -1585,6 +1580,9 @@ function loadSettings(strobj, fromServer, syncMode)
 		if(globalSettings.enablekbnavigation.value!==false)
 			initKbProjectNavigation();
 	settingsLoaded=true;
+
+	globalSettings.defaultactiveapp.value = (globalActiveView == 'todo') ? 'CalDavTODO':'CalDavZAP';
+
 	if(!isAvaible(globalSettings.defaultactiveapp.value))
 		globalActiveApp = globalAvailableAppsArray[0];
 	else
@@ -1972,4 +1970,14 @@ function setCalendarNumber(initSearch)
 			globalCalendarNumber++;
 			globalTodoCalendarNumber++;
 		}
+}
+
+if('serviceWorker' in navigator) {
+	window.addEventListener('load', function() {
+		navigator.serviceWorker.register('./sw.js').then(function(registration) {
+			console.log('ServiceWorker registered');
+		}, function(err) {
+			console.log('ServiceWorker registration failed: ', err);
+		});
+	});
 }
