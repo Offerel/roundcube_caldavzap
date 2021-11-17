@@ -40,4 +40,5 @@ $config['cdz_tzsupport'] = true;
 $config['cdz_rewritetz'] = false;
 // Remove unknown timezone information from an event
 $config['cdz_removetz'] = false;
+$config['cdz_ignserver'] = false;
 ?>

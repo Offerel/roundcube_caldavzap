@@ -1,3 +1,6 @@
+### v1.5.3
+- Added option to ignore server settings (Propertystorage)
+  
 ### v1.5.2
 - Fix deprecated caching mechanism
 - Added caching Service Worker

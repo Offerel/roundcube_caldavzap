@@ -284,7 +284,7 @@ var globalSettingsSaving = '';
 var globalFirstHideLoader = true;
 var globalLoadedCollectionsNumber = 0;
 var globalLoadedCollectionsCount = 0;
-var ignoreServerSettings=false;
+//var ignoreServerSettings=false;
 var globalPreventLogoutSync=false;
 var globalEmailAddress='';
 var globalSettingsVersion=3;
@@ -1581,7 +1581,15 @@ function loadSettings(strobj, fromServer, syncMode)
 			initKbProjectNavigation();
 	settingsLoaded=true;
 
-	globalSettings.defaultactiveapp.value = (globalActiveView == 'todo') ? 'CalDavTODO':'CalDavZAP';
+//	globalSettings.defaultactiveapp.value = (globalActiveView == 'todo') ? 'CalDavTODO':'CalDavZAP';
+
+	if(globalActiveView == 'todo') {
+		globalSettings.defaultactiveapp.value = 'CalDavTODO';
+		globalSettings.activeview.value = 'agendaWeek';
+	} else {
+		globalSettings.defaultactiveapp.value = 'CalDavZAP';
+		globalSettings.activeview.value = globalActiveView;
+	}
 
 	if(!isAvaible(globalSettings.defaultactiveapp.value))
 		globalActiveApp = globalAvailableAppsArray[0];

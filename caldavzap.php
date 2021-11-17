@@ -44,9 +44,7 @@ class caldavzap extends rcube_plugin
 		}
 		
 		$caldavzap_langs = array("cs_CZ", "da_DK", "de_DE", "en_US", "fr_FR", "it_IT", "ja_JP", "hu_HU", "nb_NO", "nl_NL", "sk_SK", "tr_TR", "ru_RU", "uk_UA", "zh_CN");
-		
 		$rc_lang = $rcmail->get_user_language();
-		
 		$rc_timezone = $rcmail->config->get('timezone');
 		$cdz_standardview = $rcmail->config->get('cdz_standardview');
 		$cdz_weekstart = intval($rcmail->config->get('cdz_weekstart'));
@@ -56,6 +54,7 @@ class caldavzap extends rcube_plugin
 		$cdz_timezonesupport = boolval($rcmail->config->get('cdz_tzsupport'));
 		$cdz_rewritetimezone = boolval($rcmail->config->get('cdz_rewritetz'));
 		$cdz_removetimezone = boolval($rcmail->config->get('cdz_removetz'));
+		$cdz_ignoreserver = boolval($rcmail->config->get('cdz_ignserver'));
 		$cdz_options = ['cdz_ln' => (in_array($rc_lang,$caldavzap_langs)) ? $rc_lang:'en_US', 
 						'cdz_tz' => $rc_timezone,
 						'cdz_wv' => $cdz_standardview,
@@ -65,7 +64,8 @@ class caldavzap extends rcube_plugin
 						'cdz_wd' => $cdz_weekendays,
 						'cdz_ts' => $cdz_timezonesupport,
 						'cdz_tr' => $cdz_rewritetimezone,
-						'cdz_td' => $cdz_removetimezone
+						'cdz_td' => $cdz_removetimezone,
+						'cdz_is' => $cdz_ignoreserver
 						];
 
 		setcookie('cdz', json_encode($cdz_options), 0, parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '.'.$_SERVER['HTTP_HOST'], true);
@@ -84,7 +84,18 @@ class caldavzap extends rcube_plugin
 		$rcmail = rcmail::get_instance();
 		
 		$p['blocks']['main']['name']=$this->gettext('mainoptions');
-		
+
+		$field_id='cdz_ignserver';
+		$ignsrv = new html_checkbox(array(	'name'	=> 'cdz_ignsrv',
+											'id'	=> 'cdz_ignsrv',
+											'value' => 1
+										));
+
+		$cdz_ignsrv = $rcmail->config->get('cdz_ignserver');
+		$p['blocks']['main']['options']['cdz_ignserver'] = array(
+														'title'=> html::label($field_id, "Property Storage"),
+														'content'=> $ignsrv->show($cdz_ignsrv)."Ignore Server Settings</br>");
+
 		$field_id='cdz_standardview';
 		$select   = new html_select(array('name' => 'cdz_standardview', 'id' => $field_id));
 		foreach (array('month', 'multiWeek', 'agendaWeek', 'agendaDay', 'todo') as $m) {$select->add($this->gettext('cdz_'.$m), $m);}
@@ -246,7 +257,8 @@ class caldavzap extends rcube_plugin
 				'cdz_tzsupport'		=> intval(rcube_utils::get_input_value('cdz_gtzs', rcube_utils::INPUT_POST)),
 				'cdz_rewritetz'		=> intval(rcube_utils::get_input_value('cdz_grtz', rcube_utils::INPUT_POST)),
 				'cdz_removetz'		=> intval(rcube_utils::get_input_value('cdz_gdtz', rcube_utils::INPUT_POST)),
-				'timezone'		=> $tz
+				'timezone'			=> $tz,
+				'cdz_ignserver'		=> intval(rcube_utils::get_input_value('cdz_ignsrv', rcube_utils::INPUT_POST))
             );
 		}
 

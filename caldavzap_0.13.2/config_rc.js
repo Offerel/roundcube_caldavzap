@@ -41,8 +41,10 @@ for(var i = 0; i < ck.length; i++) {
 		var globalTimeZoneSupport=carr.cdz_ts;
 		var globalRewriteTimezoneComponent=carr.cdz_tr;
 		var globalRemoveUnknownTimezone=carr.cdz_td;
+		var ignoreServerSettings = carr.cdz_is;
 	}
 }
+
 var globalSortAlphabet=' 0123456789'+
 	'AÀÁÂÄÆÃÅĀBCÇĆČDĎEÈÉÊËĒĖĘĚFGĞHIÌÍÎİÏĪĮJKLŁĹĽMNŃÑŇOÒÓÔÖŐŒØÕŌ'+
 	'PQRŔŘSŚŠȘșŞşẞTŤȚțŢţUÙÚÛÜŰŮŪVWXYÝŸZŹŻŽ'+
