@@ -284,7 +284,6 @@ var globalSettingsSaving = '';
 var globalFirstHideLoader = true;
 var globalLoadedCollectionsNumber = 0;
 var globalLoadedCollectionsCount = 0;
-var ignoreServerSettings=false;
 var globalPreventLogoutSync=false;
 var globalEmailAddress='';
 var globalSettingsVersion=3;
@@ -1455,6 +1454,29 @@ function transformSettings(settings) {
 
 function loadSettings(strobj, fromServer, syncMode)
 {
+	var temObj = jQuery.parseJSON(strobj)
+	
+	if(globalActiveView == 'todo') {
+		temObj.defaultactiveapp = 'CalDavTODO';
+		temObj.activeview = 'agendaWeek';
+	} else {
+		temObj.defaultactiveapp = 'CalDavZAP';
+		temObj.activeview = globalActiveView;
+	}
+	
+	temObj.timezone = globalTimeZone;
+	temObj.datepickerfirstdayofweek = globalDatepickerFirstDayOfWeek;
+	temObj.calendarstartofbusiness = globalCalendarStartOfBusiness;
+	temObj.calendarendofbusiness = globalCalendarEndOfBusiness;
+	temObj.weekenddays[0] = globalWeekendDays[0];
+	temObj.weekenddays[1] = globalWeekendDays[1];
+	temObj.timezonesupport = globalTimeZoneSupport;
+	temObj.rewritetimezonecomponent = globalRewriteTimezoneComponent;
+	temObj.removeunknowntimezone = globalRemoveUnknownTimezone;
+	
+	strobj = JSON.stringify(temObj);
+	//console.log(tempStr);
+	
 	if(settingsLoaded && !syncMode)
 		return false;
 	try
@@ -1581,7 +1603,15 @@ function loadSettings(strobj, fromServer, syncMode)
 			initKbProjectNavigation();
 	settingsLoaded=true;
 
-	globalSettings.defaultactiveapp.value = (globalActiveView == 'todo') ? 'CalDavTODO':'CalDavZAP';
+//	globalSettings.defaultactiveapp.value = (globalActiveView == 'todo') ? 'CalDavTODO':'CalDavZAP';
+
+	if(globalActiveView == 'todo') {
+		globalSettings.defaultactiveapp.value = 'CalDavTODO';
+		globalSettings.activeview.value = 'agendaWeek';
+	} else {
+		globalSettings.defaultactiveapp.value = 'CalDavZAP';
+		globalSettings.activeview.value = globalActiveView;
+	}
 
 	if(!isAvaible(globalSettings.defaultactiveapp.value))
 		globalActiveApp = globalAvailableAppsArray[0];
