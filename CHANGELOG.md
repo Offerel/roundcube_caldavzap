@@ -1,5 +1,6 @@
 ### v1.5.3
 - Added option to ignore server settings (Propertystorage)
+- Load assets on demand
   
 ### v1.5.2
 - Fix deprecated caching mechanism
