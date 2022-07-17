@@ -3,9 +3,9 @@
  * Roundcube CalDAVZap Plugin
  * Integrate CalDAVZap in to Roundcube
  *
- * @version 1.5.2
+ * @version 1.5.3
  * @author Offerel
- * @copyright Copyright (c) 2021, Offerel
+ * @copyright Copyright (c) 2022, Offerel
  * @license GNU General Public License, version 3
  */
 
@@ -29,11 +29,37 @@ class caldavzap extends rcube_plugin
 			'type'		=> 'link'
 		), 'taskbar');
 		
-		$this->include_stylesheet($this->local_skin_path().'/caldavzap.css');
-		
 		if ($rcmail->task == 'caldavzap') {
+			$this->include_stylesheet($this->local_skin_path().'/caldavzap.css');
 			$this->register_action('index', array($this, 'action'));
 			$rcmail->output->set_env('refresh_interval', 0);
+
+			$caldavzap_langs = array("cs_CZ", "da_DK", "de_DE", "en_US", "fr_FR", "it_IT", "ja_JP", "hu_HU", "nb_NO", "nl_NL", "sk_SK", "tr_TR", "ru_RU", "uk_UA", "zh_CN");
+			$rc_lang = $rcmail->get_user_language();
+			$rc_timezone = $rcmail->config->get('timezone');
+			$cdz_standardview = $rcmail->config->get('cdz_standardview');
+			$cdz_weekstart = intval($rcmail->config->get('cdz_weekstart'));
+			$cdz_businesstart = intval($rcmail->config->get('cdz_businesstart'));
+			$cdz_businessend = intval($rcmail->config->get('cdz_businessend'));
+			$cdz_weekendays = $rcmail->config->get('cdz_weekendays');
+			$cdz_timezonesupport = boolval($rcmail->config->get('cdz_tzsupport'));
+			$cdz_rewritetimezone = boolval($rcmail->config->get('cdz_rewritetz'));
+			$cdz_removetimezone = boolval($rcmail->config->get('cdz_removetz'));
+			$cdz_ignoreserver = boolval($rcmail->config->get('cdz_ignserver'));
+			$cdz_options = ['cdz_ln' => (in_array($rc_lang,$caldavzap_langs)) ? $rc_lang:'en_US', 
+							'cdz_tz' => $rc_timezone,
+							'cdz_wv' => $cdz_standardview,
+							'cdz_fd' => $cdz_weekstart,
+							'cdz_sb' => $cdz_businesstart,
+							'cdz_eb' => $cdz_businessend,
+							'cdz_wd' => $cdz_weekendays,
+							'cdz_ts' => $cdz_timezonesupport,
+							'cdz_tr' => $cdz_rewritetimezone,
+							'cdz_td' => $cdz_removetimezone,
+							'cdz_is' => $cdz_ignoreserver
+							];
+
+			setcookie('cdz', json_encode($cdz_options), 0, parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '.'.$_SERVER['HTTP_HOST'], true);
 		}
 		
 		if($rcmail->task == 'settings') {
@@ -42,33 +68,6 @@ class caldavzap extends rcube_plugin
 			$this->add_hook('preferences_save', array($this, 'preferences_save'));
 			$this->include_script('addon.js');
 		}
-		
-		$caldavzap_langs = array("cs_CZ", "da_DK", "de_DE", "en_US", "fr_FR", "it_IT", "ja_JP", "hu_HU", "nb_NO", "nl_NL", "sk_SK", "tr_TR", "ru_RU", "uk_UA", "zh_CN");
-		$rc_lang = $rcmail->get_user_language();
-		$rc_timezone = $rcmail->config->get('timezone');
-		$cdz_standardview = $rcmail->config->get('cdz_standardview');
-		$cdz_weekstart = intval($rcmail->config->get('cdz_weekstart'));
-		$cdz_businesstart = intval($rcmail->config->get('cdz_businesstart'));
-		$cdz_businessend = intval($rcmail->config->get('cdz_businessend'));
-		$cdz_weekendays = $rcmail->config->get('cdz_weekendays');
-		$cdz_timezonesupport = boolval($rcmail->config->get('cdz_tzsupport'));
-		$cdz_rewritetimezone = boolval($rcmail->config->get('cdz_rewritetz'));
-		$cdz_removetimezone = boolval($rcmail->config->get('cdz_removetz'));
-		$cdz_ignoreserver = boolval($rcmail->config->get('cdz_ignserver'));
-		$cdz_options = ['cdz_ln' => (in_array($rc_lang,$caldavzap_langs)) ? $rc_lang:'en_US', 
-						'cdz_tz' => $rc_timezone,
-						'cdz_wv' => $cdz_standardview,
-						'cdz_fd' => $cdz_weekstart,
-						'cdz_sb' => $cdz_businesstart,
-						'cdz_eb' => $cdz_businessend,
-						'cdz_wd' => $cdz_weekendays,
-						'cdz_ts' => $cdz_timezonesupport,
-						'cdz_tr' => $cdz_rewritetimezone,
-						'cdz_td' => $cdz_removetimezone,
-						'cdz_is' => $cdz_ignoreserver
-						];
-
-		setcookie('cdz', json_encode($cdz_options), 0, parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '.'.$_SERVER['HTTP_HOST'], true);
 	}
 
 	function cal_preferences_sections_list($p) {
