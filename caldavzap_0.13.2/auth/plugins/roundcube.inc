@@ -1,6 +1,6 @@
 <?php
 require_once(dirname(__FILE__).'/roundcube_conf.inc');
-define('INSTALL_PATH', realpath(__DIR__ . '/../../../../../') . '/');
+//define('CINSTALL_PATH', realpath(__DIR__ . '/../../../../../') . '/');
 require_once(INSTALL_PATH . 'program/include/iniset.php');
 
 	function roundcube_authenticate()
