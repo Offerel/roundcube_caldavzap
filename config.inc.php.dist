@@ -33,4 +33,12 @@ $config['cdz_businessend'] = 15;
 // considered as business days.
 // Sunday is 0, Monday is 1, etc.
 $config['cdz_weekendays'] = "0,6";
+
+// This option enables timezone support in the client.
+$config['cdz_tzsupport'] = true;
+// Rerite timezone information using the official IANA timezone database information
+$config['cdz_rewritetz'] = false;
+// Remove unknown timezone information from an event
+$config['cdz_removetz'] = false;
+$config['cdz_ignserver'] = false;
 ?>

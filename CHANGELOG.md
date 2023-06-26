@@ -1,6 +1,21 @@
+### v1.5.3
+- Added option to ignore server settings (Propertystorage)
+- Load assets on demand
+  
+### v1.5.2
+- Fix deprecated caching mechanism
+- Added caching Service Worker
+- Added option to start in ToDo
+  
+### v1.5.1.1
+- Fix for depracted samesite Cookie
+  
+### v1.5.1
+- Added option for using timezones
+  
 ### v1.5.0
-- Added Preferences for Plugin
-- Small Bugfix
+- Remove refresh, when plugin is active
+- Add settings page
   
 ### v1.4.1
 - Fix for Roundcube 1.4 RC2

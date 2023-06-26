@@ -64,6 +64,3 @@
 	left: 0 !important;
 	width: 274px !important;
 }
-.listing.iconized tr.caldavzap > td.section::before {
-	content: "\f073";
-}

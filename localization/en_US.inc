@@ -13,6 +13,7 @@ $labels['cdz_month'] = 'Month';
 $labels['cdz_multiWeek'] = 'Weeks';
 $labels['cdz_agendaDay'] = 'Day';
 $labels['cdz_agendaWeek'] = 'Week';
+$labels['cdz_todo'] = 'Todos';
 
 $labels['cdz_day_0'] = 'Sunday';
 $labels['cdz_day_1'] = 'Monday';
@@ -36,4 +37,9 @@ $labels['cdz_time_15'] = '03:00 pm';
 $labels['cdz_time_16'] = '04:00 pm';
 $labels['cdz_time_17'] = '05:00 pm';
 $labels['cdz_time_18'] = '06:00 pm';
+
+$labels['cdz_timezone'] = 'Timezone';
+$labels['cdz_tzsupport'] = 'Timezone-Support';
+$labels['cdz_rewritetz'] = 'Rewrite timezone';
+$labels['cdz_removetz'] = 'Remove unknown timezone';
 ?>

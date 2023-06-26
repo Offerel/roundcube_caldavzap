@@ -1144,6 +1144,7 @@ function netFindResource(inputResource, inputResourceIndex, forceLoad, indexR, l
 			if(!settingsLoaded && inputResource.href.indexOf(globalLoginUsername)!=-1 && inputResource.settingsAccount && (globalSettings.settingstype.value=='' || globalSettings.settingstype.value==null || (globalSettings.settingstype.value!='' && globalSettings.settingstype.value!=null && globalSettings.settingstype.value=='principal-URL')))
 			{
 				var settings=$(xml.responseXML).children().filterNsNode('multistatus').children().filterNsNode('response').children().filterNsNode('propstat').children().filterNsNode('prop').children().filterNsNode('settings').text();
+				
 				if(settings!='')
 				{
 					if(!ignoreServerSettings)
@@ -1396,6 +1397,7 @@ function netLoadResource(inputResource, inputHref, hrefMode, inputResourceIndex,
 				else
 				{
 					var calSettings=$(xml.responseXML).children().filterNsNode('multistatus').children().filterNsNode('response').children().filterNsNode('propstat').children().filterNsNode('prop').children().filterNsNode('cal-settings').text();
+
 					if(calSettings!='')
 					{
 						if(!ignoreServerSettings)
