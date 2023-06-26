@@ -1,3 +1,6 @@
+### v1.5.4
+- Fixed INSTALL_PATH variable
+
 ### v1.5.3
 - Added option to ignore server settings (Propertystorage)
 - Load assets on demand
