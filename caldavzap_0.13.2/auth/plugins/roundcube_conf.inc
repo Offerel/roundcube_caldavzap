@@ -1,5 +1,5 @@
 <?php
-	define('INSTALL_PATH', realpath(__DIR__ . '/../../../../') . '/');
+	//define('CINSTALL_PATH', realpath(__DIR__ . '/../../../../') . '/');
 	require_once INSTALL_PATH . 'program/include/iniset.php';
 	$rcmail = rcmail::get_instance();
 	
