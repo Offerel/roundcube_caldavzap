@@ -1,13 +1,3 @@
-if('serviceWorker' in navigator) {
-	window.addEventListener('load', function() {
-		navigator.serviceWorker.register('./sw.js').then(function(registration) {
-			console.log('ServiceWorker registered');
-		}, function(err) {
-			console.log('ServiceWorker registration failed: ', err);
-		});
-	});
-}
-
 var globalNetworkRoundcubeSettings={
 	href: location.protocol+'//'+location.hostname+(location.port ? ':'+location.port : '')+location.pathname.replace(RegExp('roundcube\.html$'),'')+'auth/',
 	timeOut: 30000

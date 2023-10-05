@@ -1,7 +1,7 @@
 /**
  * Roundcube CalDAVZap Plugin
  *
- * @version 1.5.5
+ * @version 1.5.6
  * @author Offerel
  * @copyright Copyright (c) 2023, Offerel
  * @license GNU General Public License, version 3

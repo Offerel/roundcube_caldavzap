@@ -1,3 +1,6 @@
+### v1.5.6
+- 
+  
 ### v1.5.5
 - Fix mobile UI
   
@@ -14,7 +17,7 @@
 - Added option to start in ToDo
   
 ### v1.5.1.1
-- Fix for depracted samesite Cookie
+- Fix for deprecated samesite Cookie
   
 ### v1.5.1
 - Added option for using timezones
