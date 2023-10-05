@@ -64,3 +64,19 @@
 	left: 0 !important;
 	width: 274px !important;
 }
+@media screen and (max-width: 768px) {
+	#ResourceCalDAVList, #ResourceCalDAVTODOList, #resourceCalDAVTODO_h, #resourceCalDAV_h, #timezoneWrapper, #timezoneWrapperTODO {
+		left: 0 !important;
+		width: 0 !important;
+	}
+	#main, #mainTODO, #main_h, #main_h_TODO, #searchForm, #searchFormTODO {
+		left: 0px;
+	}
+	#caldavzaptoolbar {
+		top: 15px;
+		position: absolute;
+	}
+	#calendar {
+		padding: 0;
+	}
+}

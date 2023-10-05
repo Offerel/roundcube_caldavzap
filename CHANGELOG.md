@@ -1,3 +1,9 @@
+### v1.5.5
+- Fix mobile UI
+  
+### v1.5.4
+- Fix INSTALL_PATH variable
+  
 ### v1.5.3
 - Added option to ignore server settings (Propertystorage)
 - Load assets on demand
