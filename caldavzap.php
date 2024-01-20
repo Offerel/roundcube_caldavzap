@@ -19,6 +19,7 @@ class caldavzap extends rcube_plugin
 		$this->add_texts('localization/', true);
 		$this->register_task('caldavzap');
 		
+		$this->include_stylesheet($this->local_skin_path().'/caldavzap_button.css');
 		$this->add_button(array(
 			'label'		=> 'caldavzap.caldavzap',
 			'id'		=> '7ea3a1d1-8270-4985-aaaa-c8227e551e43',
