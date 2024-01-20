@@ -26,10 +26,6 @@ function maxselect(select, maxcount) {
 function showPanel() {
 	let lft = '274px';
 	let zft = '0px';
-	//document.getElementById('caldavzapcontentframe').contentWindow
-	//#main, #mainTODO, #main_h, #main_h_TODO, #searchForm, #searchFormTODO {
-	//	left: 274px;
-	//}
 
 	let main = document.getElementById('caldavzapcontentframe').contentWindow.document.getElementById('main');
 	let mainTODO = document.getElementById('caldavzapcontentframe').contentWindow.document.getElementById('mainTODO');
