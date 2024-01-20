@@ -2,14 +2,14 @@
 	"name": "offerel/caldavzap",
 	"description": "A plugin for Roundcube to include CalDAVZap in to the main GUI",
 	"keywords": ["CalDAV","Calendar","Tasks","ToDo","CalDAVZap"],
-	"homepage": "https://github.com/Offerel/roundcube_caldavzap",
+	"homepage": "https://codeberg.org/Offerel/roundcube_caldavzap",
     	"type": "roundcube-plugin",
 	"license": "AGPL-3.0",
 	"version": "1.5.6",
 	"authors": [
 	{
 		"name": "Offerel",
-		"homepage": "https://github.com/Offerel",
+		"homepage": "https://codeberg.org/Offerel/",
 		"role": "Developer"
 	}
 	],

@@ -3,6 +3,7 @@ $labels = array();
 $labels['caldavzap'] = 'Calendriers';
 $labels['todo'] = 'Tâches';
 $labels['reload'] = 'Rafraichir';
+$labels['select'] = 'Sélectionner';
 
 $labels['cdz_standardview'] = 'Vue par défaut';
 $labels['cdz_weekstart'] = 'La semaine commence le';

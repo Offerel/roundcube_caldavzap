@@ -1,5 +1,7 @@
 ### v1.5.6
-- 
+- Fix #30 (Thanks to buttercookie42)
+- Hide calendar selection
+- Small bug fixes
   
 ### v1.5.5
 - Fix mobile UI
