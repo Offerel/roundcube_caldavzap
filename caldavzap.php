@@ -3,7 +3,7 @@
  * Roundcube CalDAVZap Plugin
  * Integrate CalDAVZap in to Roundcube
  *
- * @version 1.5.6
+ * @version 1.5.7
  * @author Offerel
  * @copyright Copyright (c) 2024, Offerel
  * @license GNU General Public License, version 3
@@ -29,9 +29,11 @@ class caldavzap extends rcube_plugin
 			'innerclass'=> 'button-inner',
 			'type'		=> 'link'
 		), 'taskbar');
-		
+
+		$this->include_stylesheet($this->local_skin_path().'/caldavzap.css');
+
 		if ($rcmail->task == 'caldavzap') {
-			$this->include_stylesheet($this->local_skin_path().'/caldavzap.css');
+			
 			$this->include_script('addon.js');
 			$this->register_action('index', array($this, 'action'));
 			$rcmail->output->set_env('refresh_interval', 0);

@@ -1,3 +1,6 @@
+.listing.iconized tr.caldavzap>td.section:before {
+	content: '\f073';
+}
 #content {
 	width: 100%;
 }

@@ -5,7 +5,7 @@
 	"homepage": "https://codeberg.org/Offerel/roundcube_caldavzap",
     	"type": "roundcube-plugin",
 	"license": "AGPL-3.0",
-	"version": "1.5.6",
+	"version": "1.5.7",
 	"authors": [
 	{
 		"name": "Offerel",

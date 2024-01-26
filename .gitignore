@@ -1,0 +1,4 @@
+*.bak
+env.properties
+config.inc.php
+.vscode

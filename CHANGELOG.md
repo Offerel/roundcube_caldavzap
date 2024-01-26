@@ -1,3 +1,6 @@
+### v1.5.7
+- Fix settings icon
+
 ### v1.5.6
 - Fix #30 (Thanks to buttercookie42)
 - Hide calendar selection
