@@ -17,8 +17,7 @@ class caldavzap extends rcube_plugin
 		$rcmail = rcmail::get_instance();
 		$this->load_config();
 		$this->add_texts('localization/', true);
-		$this->register_task('caldavzap');
-		
+		$this->register_task('caldavzap');		
 		$this->include_stylesheet($this->local_skin_path().'/caldavzap_button.css');
 		$this->add_button(array(
 			'label'		=> 'caldavzap.caldavzap',
@@ -33,7 +32,6 @@ class caldavzap extends rcube_plugin
 		$this->include_stylesheet($this->local_skin_path().'/caldavzap.css');
 
 		if ($rcmail->task == 'caldavzap') {
-			
 			$this->include_script('addon.js');
 			$this->register_action('index', array($this, 'action'));
 			$rcmail->output->set_env('refresh_interval', 0);
@@ -74,7 +72,7 @@ class caldavzap extends rcube_plugin
 		}
 	}
 
-	function cal_preferences_sections_list($p) {
+	function cal_preferences_sections_list($p) {		
 		$p['list']['caldavzap'] = array('id' => 'caldavzap', 'section' => $this->gettext('caldavzap'));
 		return($p);
 	}
@@ -84,8 +82,7 @@ class caldavzap extends rcube_plugin
             return $p;
 		}
 
-		$rcmail = rcmail::get_instance();
-		
+		$rcmail = rcmail::get_instance();		
 		$p['blocks']['main']['name']=$this->gettext('mainoptions');
 
 		$field_id='cdz_ignserver';
@@ -236,7 +233,6 @@ class caldavzap extends rcube_plugin
 																	$inputt2->show($cdz_grtz)." ".$this->gettext('cdz_rewritetz')."</br>".
 																	$inputt3->show($cdz_gdtz)." ".$this->gettext('cdz_removetz')."</br>"
 													);
-
 		return $p;
 	}
 
