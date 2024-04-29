@@ -2,41 +2,27 @@ name: Bug Report
 about: File a bug report
 title: '[Bug]: '
 body:
-  - type: markdown
-    attributes:
-      value: |
-        Thanks for taking the time to fill out this bug report!
   # some markdown that will only be visible once the issue has been created
   - type: markdown
     attributes:
       value: |
         This issue was created by an issue **template** :)
     visible: [content]
-  - type: input
-    id: contact
-    attributes:
-      label: Contact Details
-      description: How can we get in touch with you if we need more info?
-      placeholder: ex. email@example.com
-    validations:
-      required: false
   - type: textarea
-    id: what-happened
+    id: bug-description
     attributes:
-      label: What happened?
-      description: Also tell us, what did you expect to happen?
+      label: Description
+      description: Please describe in detail, whats the problem
       placeholder: Tell us what you see!
-      value: 'A bug happened!'
+      value: ''
     validations:
       required: true
-  - type: dropdown
+  - type: input
     id: version
     attributes:
       label: Version
-      description: What version of our software are you running?
-      options:
-        - 1.0.2 (Default)
-        - 1.0.3 (Edge)
+      description: What version of the plugin you find the issue?
+      placeholder: ex. v1.5.7
     validations:
       required: true
   - type: dropdown
@@ -47,24 +33,34 @@ body:
       options:
         - Firefox
         - Chrome
+        - Chromium
         - Safari
         - Microsoft Edge
   - type: textarea
-    id: logs
+    id: browser-logs
     attributes:
-      label: Relevant log output
-      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
+      label: Log from the Browser Dev Console
+      description: Please copy and paste the out put of errors from the Dev Console. This will be automatically formatted into code.
       render: shell
-  - type: checkboxes
-    id: terms
+    validations:
+      required: true
+  - type: textarea
+    id: roundcube-logs
     attributes:
-      label: Code of Conduct
-      description: By submitting this issue, you agree to follow our [Code of Conduct](https://example.com)
-      options:
-        - label: I agree to follow this project's Code of Conduct
-          required: true
-        - label: I have also read the CONTRIBUTION.MD
-          required: true
-          visible: [form]
-        - label: This is a TODO only visible after issue creation
-          visible: [content]
+      label: Roundcube Error Log
+      description: Please paste the Roundcube Error Log.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: webserver-logs
+    attributes:
+      label: Webserver Error Log
+      description: Please paste the Webserver Error Log.
+      render: shell
+  - type: textarea
+    id: php-logs
+    attributes:
+      label: PHP Error Log
+      description: Please paste the PHP Error Log.
+      render: shell
