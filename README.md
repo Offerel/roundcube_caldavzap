@@ -8,8 +8,8 @@ There are some minor tweaks i have made to:
 4. **main_rc.js** added the code for my own Auth Plugin
 5. **/auth/plugins/roundcube** both files in this folder manage to login via a existing Roundcube session
 
-# Changelog and FAQ
-You can find the [Changelog](../../wiki/Changelog) and [FAQ](../../wiki/FAQ) now in the Wiki of this repository.
+# Issues
+Please create issues in the [Codeberg.org](https://codeberg.org/Offerel/roundcube_caldavzap/issues) issue tracker. I have disabled the issue tracker in GitHub.com because the repo there is only used as a workaround and for compatibility reasons.
 
 # Installation
 1. extract the archive into the plugin folder of Roundcube `<roundcube>/plugins/` and rename it to `caldavzap`, so that the path reads at the end /path/to/DOCUMENT_ROOT/ROUNDCUBEDIR/plugins/caldavzap/.
