@@ -13,7 +13,7 @@ body:
     attributes:
       label: Description
       description: Please describe in detail, whats the problem
-      placeholder: Tell us what you see!
+      placeholder: ''
       value: ''
     validations:
       required: true
@@ -31,6 +31,7 @@ body:
       label: What browsers are you seeing the problem on?
       multiple: true
       options:
+        - Chrome
         - Firefox
         - Chrome
         - Chromium
