@@ -7,7 +7,7 @@
  * @license GNU General Public License, version 3
  */
 window.rcmail && rcmail.addEventListener("init", function(a) {
-	document.getElementById('panel').addEventListener('click', showPanel);
+	if(document.getElementById('panel')) document.getElementById('panel').addEventListener('click', showPanel);
 });
 
 function maxselect(select, maxcount) {
