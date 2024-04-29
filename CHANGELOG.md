@@ -1,3 +1,5 @@
+### v1.5.8
+
 ### v1.5.7
 
 *   Fix settings icon
