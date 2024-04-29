@@ -1,7 +1,7 @@
 ---
-name: 'Template Name'
+name: 'Template Name 2'
 about: 'This template is for testing!'
-title: '[TEST] '
+title: '[BUG] '
 ref: 'main'
 labels:
   - bug
