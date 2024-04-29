@@ -31,12 +31,12 @@ body:
       label: What browsers are you seeing the problem on?
       multiple: true
       options:
-        - Chrome
         - Firefox
         - Chrome
         - Chromium
         - Safari
         - Microsoft Edge
+      value: ''
   - type: textarea
     id: browser-logs
     attributes:
