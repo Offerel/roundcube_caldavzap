@@ -29,6 +29,7 @@ body:
     id: browsers
     attributes:
       label: What browsers are you seeing the problem on?
+      value: ''
       multiple: true
       options:
         - Firefox
@@ -36,7 +37,6 @@ body:
         - Chromium
         - Safari
         - Microsoft Edge
-      value: ''
   - type: textarea
     id: browser-logs
     attributes:
