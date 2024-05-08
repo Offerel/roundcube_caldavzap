@@ -2713,3 +2713,17 @@ img[data-type="invalidVerySmall"]
 	white-space: normal;
 	word-wrap: break-word;
 }
+@media (prefers-color-scheme: dark) {
+	#todoForm, .headers, h1 {
+		background-color: gray;
+	}
+	#searchForm, #searchFormTODO {
+		background: gray;
+	}
+	#main, #mainTODO {
+		background: darkgray;
+	}
+	.searchContainer input {
+		background-color: dimgrey;
+	}
+}
