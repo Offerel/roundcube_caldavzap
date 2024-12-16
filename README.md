@@ -12,9 +12,9 @@ There are some minor tweaks i have made to:
 Please create issues in the [Codeberg.org](https://codeberg.org/Offerel/Roundcube_CalDavZAP/issues) issue tracker. I have disabled the issue tracker in GitHub.com because the repo there is only used as a workaround and for compatibility reasons.
 
 # Contribution
-If you would like to support this WebApp, you have various options. You can report bugs via the [issue tracker](https://codeberg.org/Offerel/SyncMarks-Webapp/issues). This helps me to fix these bugs as quickly as possible.
+If you would like to support this Plugin, you have various options. You can report bugs via the [Issue Tracker](https://codeberg.org/Offerel/Roundcube_CalDavZAP/issues). This helps me to fix these bugs as quickly as possible.
 
-Another option is to help translate the app into other languages. This is relatively easy to do via Weblate. The following languages are currently available:
+Another option is to help translate the plugin into other languages. This is relatively easy to do via Weblate. The following languages are currently available:
 [![Status](https://translate.codeberg.org/widget/roundcube-caldavzap/roundcube-plugin/multi-auto.svg)](https://translate.codeberg.org/engage/roundcube-caldavzap/)
 
 # Installation
