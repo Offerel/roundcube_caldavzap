@@ -1452,9 +1452,15 @@ function transformSettings(settings) {
 	}
 }
 
-function loadSettings(strobj, fromServer, syncMode)
-{
-	var temObj = jQuery.parseJSON(strobj)
+function loadSettings(strobj, fromServer, syncMode) {
+	try {
+		var temObj = jQuery.parseJSON(strobj);
+		window.parent.parent.document.getElementById("refresh").blur();
+	} catch (error) {
+		console.log('load settings - parsing error: ' + error);
+		loadSettings(JSON.stringify(globalSettings), false, false);
+		return false;
+	}
 	
 	if(globalActiveView == 'todo') {
 		temObj.defaultactiveapp = 'CalDavTODO';
@@ -1475,7 +1481,6 @@ function loadSettings(strobj, fromServer, syncMode)
 	temObj.removeunknowntimezone = globalRemoveUnknownTimezone;
 	
 	strobj = JSON.stringify(temObj);
-	//console.log(tempStr);
 	
 	if(settingsLoaded && !syncMode)
 		return false;
