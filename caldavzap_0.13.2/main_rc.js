@@ -1457,7 +1457,7 @@ function loadSettings(strobj, fromServer, syncMode) {
 		var temObj = jQuery.parseJSON(strobj);
 		window.parent.parent.document.getElementById("refresh").blur();
 	} catch (error) {
-		console.log('load settings - parsing error: ' + error);
+		console.warn('load settings - parsing error: ' + error);
 		loadSettings(JSON.stringify(globalSettings), false, false);
 		return false;
 	}
